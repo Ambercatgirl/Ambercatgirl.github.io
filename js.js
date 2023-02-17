@@ -163,6 +163,7 @@ function initialize() {
         document.getElementById(("placed_") + i).innerHTML = items[i].getAmountPlaced() + " Placed.";
         document.getElementById(("effectGiven_") + i).innerHTML = "Gives " + items[i].getEffect();
         document.getElementById(("effectBuffs_") + i).innerHTML = "Buffs " + items[i].hasEffect();
+        document.getElementById(("multiAndRarityDisplay_") + i).innerHTML = items[i].getMulti() + "x | R" + items[i].getRarity();
     }
     document.getElementById("moneyDisplay").innerHTML = "$" + setSuffix(money);
     document.getElementById("livesDisplay").innerHTML = "Life " + lives;

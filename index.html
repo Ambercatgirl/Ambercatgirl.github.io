@@ -4,26 +4,26 @@
     <script src="js.js"></script>
     <link rel="stylesheet" href="css.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-			crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function () {
             initialize();
         });
     </script>
-    
+
 </head>
 
 <body>
     <div class="container-fluid">
         <br>
         <br>
-        <button id = "start" class="button2"onclick="initialize();">Start</button>
-        <button class="button2"id="ascendDisplay" onclick="ascend();">Ascend for $10</button>
-        <button class="button2"onclick="withdrawAll();">Withdraw All</button>
-        <button class="button2"id="prestigeDisplay" onclick="prestige();">Prestige: 100 Lives</button>
-        <button class="button2"id="rebirthDisplay" onclick="rebirth();">Rebirth: 25 Prestiges</button>
-        <button class="button2"id="upgradeDisplay" onclick="upgradeSpeed();">Increase Setup Speed: $25</button>
+        <button id="start" class="button2" onclick="initialize();">Start</button>
+        <button class="button2" id="ascendDisplay" onclick="ascend();">Ascend for $10</button>
+        <button class="button2" onclick="withdrawAll();">Withdraw All</button>
+        <button class="button2" id="prestigeDisplay" onclick="prestige();">Prestige: 100 Lives</button>
+        <button class="button2" id="rebirthDisplay" onclick="rebirth();">Rebirth: 25 Prestiges</button>
+        <button class="button2" id="upgradeDisplay" onclick="upgradeSpeed();">Increase Setup Speed: $25</button>
         <button class="button3" onclick="saveData();">Save Data</button>
         <br>
         <br>
@@ -31,142 +31,195 @@
         <h1 id="livesDisplay">Life 0</h1>
         <h1 id="prestigesDisplay">Prestige 0</h1>
         <div class="row">
-            <!--Deletion Starts Here--> 
+            <!--Deletion Starts Here-->
             <div class="w-100"></div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_0"></h2>
-            <h2 id="item_0"></h2>
-            <h4 id="placed_0"></h4>
-            <h4 id="effectGiven_0"></h4>
-            <h4 id="effectBuffs_0"></h4>
-            <button class="button1" onclick="addToSetup(0);">Add to setup</button><button class="button1"onclick="removeFromSetup(0);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_1"></h2>
-            <h2 id="item_1"></h2>
-            <h4 id="placed_1"></h4>
-            <h4 id="effectGiven_1"></h4>
-            <h4 id="effectBuffs_1"></h4>
-            <button class="button1" onclick="addToSetup(1);">Add to setup</button><button class="button1"onclick="removeFromSetup(1);">Remove from setup</button>
-            </div><div class="w-100"></div>
+                <h2 id="name_0"></h2>
+                <h2 id="item_0"></h2>
+                <h4 id="placed_0"></h4>
+                <h4 id="effectGiven_0"></h4>
+                <h4 id="effectBuffs_0"></h4>
+                <h6 id="multiAndRarityDisplay_0"></h6>
+                <button class="button1" onclick="addToSetup(0);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(0);">Remove from setup</button>
+            </div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_2"></h2>
-            <h2 id="item_2"></h2>
-            <h4 id="placed_2"></h4>
-            <h4 id="effectGiven_2"></h4>
-            <h4 id="effectBuffs_2"></h4>
-            <button class="button1" onclick="addToSetup(2);">Add to setup</button><button class="button1"onclick="removeFromSetup(2);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_3"></h2>
-            <h2 id="item_3"></h2>
-            <h4 id="placed_3"></h4>
-            <h4 id="effectGiven_3"></h4>
-            <h4 id="effectBuffs_3"></h4>
-            <button class="button1" onclick="addToSetup(3);">Add to setup</button><button class="button1"onclick="removeFromSetup(3);">Remove from setup</button>
-            </div><div class="w-100"></div>
+                <h2 id="name_1"></h2>
+                <h2 id="item_1"></h2>
+                <h4 id="placed_1"></h4>
+                <h4 id="effectGiven_1"></h4>
+                <h4 id="effectBuffs_1"></h4>
+                <h6 id="multiAndRarityDisplay_1"></h6>
+                <button class="button1" onclick="addToSetup(1);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(1);">Remove from setup</button>
+            </div>
+            <div class="w-100"></div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_4"></h2>
-            <h2 id="item_4"></h2>
-            <h4 id="placed_4"></h4>
-            <h4 id="effectGiven_4"></h4>
-            <h4 id="effectBuffs_4"></h4>
-            <button class="button1" onclick="addToSetup(4);">Add to setup</button><button class="button1"onclick="removeFromSetup(4);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_5"></h2>
-            <h2 id="item_5"></h2>
-            <h4 id="placed_5"></h4>
-            <h4 id="effectGiven_5"></h4>
-            <h4 id="effectBuffs_5"></h4>
-            <button class="button1" onclick="addToSetup(5);">Add to setup</button><button class="button1"onclick="removeFromSetup(5);">Remove from setup</button>
-            </div><div class="w-100"></div>
+                <h2 id="name_2"></h2>
+                <h2 id="item_2"></h2>
+                <h4 id="placed_2"></h4>
+                <h4 id="effectGiven_2"></h4>
+                <h4 id="effectBuffs_2"></h4>
+                <h6 id="multiAndRarityDisplay_2"></h6>
+                <button class="button1" onclick="addToSetup(2);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(2);">Remove from setup</button>
+            </div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_6"></h2>
-            <h2 id="item_6"></h2>
-            <h4 id="placed_6"></h4>
-            <h4 id="effectGiven_6"></h4>
-            <h4 id="effectBuffs_6"></h4>
-            <button class="button1" onclick="addToSetup(6);">Add to setup</button><button class="button1"onclick="removeFromSetup(6);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_7"></h2>
-            <h2 id="item_7"></h2>
-            <h4 id="placed_7"></h4>
-            <h4 id="effectGiven_7"></h4>
-            <h4 id="effectBuffs_7"></h4>
-            <button class="button1" onclick="addToSetup(7);">Add to setup</button><button class="button1"onclick="removeFromSetup(7);">Remove from setup</button>
-            </div><div class="w-100"></div>
+                <h2 id="name_3"></h2>
+                <h2 id="item_3"></h2>
+                <h4 id="placed_3"></h4>
+                <h4 id="effectGiven_3"></h4>
+                <h4 id="effectBuffs_3"></h4>
+                <h6 id="multiAndRarityDisplay_3"></h6>
+                <button class="button1" onclick="addToSetup(3);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(3);">Remove from setup</button>
+            </div>
+            <div class="w-100"></div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_8"></h2>
-            <h2 id="item_8"></h2>
-            <h4 id="placed_8"></h4>
-            <h4 id="effectGiven_8"></h4>
-            <h4 id="effectBuffs_8"></h4>
-            <button class="button1" onclick="addToSetup(8);">Add to setup</button><button class="button1"onclick="removeFromSetup(8);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_9"></h2>
-            <h2 id="item_9"></h2>
-            <h4 id="placed_9"></h4>
-            <h4 id="effectGiven_9"></h4>
-            <h4 id="effectBuffs_9"></h4>
-            <button class="button1" onclick="addToSetup(9);">Add to setup</button><button class="button1"onclick="removeFromSetup(9);">Remove from setup</button>
-            </div><div class="w-100"></div>
+                <h2 id="name_4"></h2>
+                <h2 id="item_4"></h2>
+                <h4 id="placed_4"></h4>
+                <h4 id="effectGiven_4"></h4>
+                <h4 id="effectBuffs_4"></h4>
+                <h6 id="multiAndRarityDisplay_4"></h6>
+                <button class="button1" onclick="addToSetup(4);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(4);">Remove from setup</button>
+            </div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_10"></h2>
-            <h2 id="item_10"></h2>
-            <h4 id="placed_10"></h4>
-            <h4 id="effectGiven_10"></h4>
-            <h4 id="effectBuffs_10"></h4>
-            <button class="button1" onclick="addToSetup(10);">Add to setup</button><button class="button1"onclick="removeFromSetup(10);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_11"></h2>
-            <h2 id="item_11"></h2>
-            <h4 id="placed_11"></h4>
-            <h4 id="effectGiven_11"></h4>
-            <h4 id="effectBuffs_11"></h4>
-            <button class="button1" onclick="addToSetup(11);">Add to setup</button><button class="button1"onclick="removeFromSetup(11);">Remove from setup</button>
-            </div><div class="w-100"></div>
+                <h2 id="name_5"></h2>
+                <h2 id="item_5"></h2>
+                <h4 id="placed_5"></h4>
+                <h4 id="effectGiven_5"></h4>
+                <h4 id="effectBuffs_5"></h4>
+                <h6 id="multiAndRarityDisplay_5"></h6>
+                <button class="button1" onclick="addToSetup(5);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(5);">Remove from setup</button>
+            </div>
+            <div class="w-100"></div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_12"></h2>
-            <h2 id="item_12"></h2>
-            <h4 id="placed_12"></h4>
-            <h4 id="effectGiven_12"></h4>
-            <h4 id="effectBuffs_12"></h4>
-            <button class="button1" onclick="addToSetup(12);">Add to setup</button><button class="button1"onclick="removeFromSetup(12);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_13"></h2>
-            <h2 id="item_13"></h2>
-            <h4 id="placed_13"></h4>
-            <h4 id="effectGiven_13"></h4>
-            <h4 id="effectBuffs_13"></h4>
-            <button class="button1" onclick="addToSetup(13);">Add to setup</button><button class="button1"onclick="removeFromSetup(13);">Remove from setup</button>
-            </div><div class="w-100"></div>
+                <h2 id="name_6"></h2>
+                <h2 id="item_6"></h2>
+                <h4 id="placed_6"></h4>
+                <h4 id="effectGiven_6"></h4>
+                <h4 id="effectBuffs_6"></h4>
+                <h6 id="multiAndRarityDisplay_6"></h6>
+                <button class="button1" onclick="addToSetup(6);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(6);">Remove from setup</button>
+            </div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_14"></h2>
-            <h2 id="item_14"></h2>
-            <h4 id="placed_14"></h4>
-            <h4 id="effectGiven_14"></h4>
-            <h4 id="effectBuffs_14"></h4>
-            <button class="button1" onclick="addToSetup(14);">Add to setup</button><button class="button1"onclick="removeFromSetup(14);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_15"></h2>
-            <h2 id="item_15"></h2>
-            <h4 id="placed_15"></h4>
-            <h4 id="effectGiven_15"></h4>
-            <h4 id="effectBuffs_15"></h4>
-            <button class="button1" onclick="addToSetup(15);">Add to setup</button><button class="button1"onclick="removeFromSetup(15);">Remove from setup</button>
-            </div><div class="w-100"></div>
+                <h2 id="name_7"></h2>
+                <h2 id="item_7"></h2>
+                <h4 id="placed_7"></h4>
+                <h4 id="effectGiven_7"></h4>
+                <h4 id="effectBuffs_7"></h4>
+                <h6 id="multiAndRarityDisplay_7"></h6>
+                <button class="button1" onclick="addToSetup(7);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(7);">Remove from setup</button>
+            </div>
+            <div class="w-100"></div>
             <div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_16"></h2>
-            <h2 id="item_16"></h2>
-            <h4 id="placed_16"></h4>
-            <h4 id="effectGiven_16"></h4>
-            <h4 id="effectBuffs_16"></h4>
-            <button class="button1" onclick="addToSetup(16);">Add to setup</button><button class="button1"onclick="removeFromSetup(16);">Remove from setup</button>
-            </div><div class="col-sm-3 border-1 text-center itemDisplay">
-            <h2 id="name_17"></h2>
-            <h2 id="item_17"></h2>
-            <h4 id="placed_17"></h4>
-            <h4 id="effectGiven_17"></h4>
-            <h4 id="effectBuffs_17"></h4>
-            <button class="button1" onclick="addToSetup(17);">Add to setup</button><button class="button1"onclick="removeFromSetup(17);">Remove from setup</button>
+                <h2 id="name_8"></h2>
+                <h2 id="item_8"></h2>
+                <h4 id="placed_8"></h4>
+                <h4 id="effectGiven_8"></h4>
+                <h4 id="effectBuffs_8"></h4>
+                <h6 id="multiAndRarityDisplay_8"></h6>
+                <button class="button1" onclick="addToSetup(8);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(8);">Remove from setup</button>
+            </div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_9"></h2>
+                <h2 id="item_9"></h2>
+                <h4 id="placed_9"></h4>
+                <h4 id="effectGiven_9"></h4>
+                <h4 id="effectBuffs_9"></h4>
+                <h6 id="multiAndRarityDisplay_9"></h6>
+                <button class="button1" onclick="addToSetup(9);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(9);">Remove from setup</button>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_10"></h2>
+                <h2 id="item_10"></h2>
+                <h4 id="placed_10"></h4>
+                <h4 id="effectGiven_10"></h4>
+                <h4 id="effectBuffs_10"></h4>
+                <h6 id="multiAndRarityDisplay_10"></h6>
+                <button class="button1" onclick="addToSetup(10);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(10);">Remove from setup</button>
+            </div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_11"></h2>
+                <h2 id="item_11"></h2>
+                <h4 id="placed_11"></h4>
+                <h4 id="effectGiven_11"></h4>
+                <h4 id="effectBuffs_11"></h4>
+                <h6 id="multiAndRarityDisplay_11"></h6>
+                <button class="button1" onclick="addToSetup(11);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(11);">Remove from setup</button>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_12"></h2>
+                <h2 id="item_12"></h2>
+                <h4 id="placed_12"></h4>
+                <h4 id="effectGiven_12"></h4>
+                <h4 id="effectBuffs_12"></h4>
+                <h6 id="multiAndRarityDisplay_12"></h6>
+                <button class="button1" onclick="addToSetup(12);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(12);">Remove from setup</button>
+            </div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_13"></h2>
+                <h2 id="item_13"></h2>
+                <h4 id="placed_13"></h4>
+                <h4 id="effectGiven_13"></h4>
+                <h4 id="effectBuffs_13"></h4>
+                <h6 id="multiAndRarityDisplay_13"></h6>
+                <button class="button1" onclick="addToSetup(13);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(13);">Remove from setup</button>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_14"></h2>
+                <h2 id="item_14"></h2>
+                <h4 id="placed_14"></h4>
+                <h4 id="effectGiven_14"></h4>
+                <h4 id="effectBuffs_14"></h4>
+                <h6 id="multiAndRarityDisplay_14"></h6>
+                <button class="button1" onclick="addToSetup(14);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(14);">Remove from setup</button>
+            </div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_15"></h2>
+                <h2 id="item_15"></h2>
+                <h4 id="placed_15"></h4>
+                <h4 id="effectGiven_15"></h4>
+                <h4 id="effectBuffs_15"></h4>
+                <h6 id="multiAndRarityDisplay_15"></h6>
+                <button class="button1" onclick="addToSetup(15);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(15);">Remove from setup</button>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_16"></h2>
+                <h2 id="item_16"></h2>
+                <h4 id="placed_16"></h4>
+                <h4 id="effectGiven_16"></h4>
+                <h4 id="effectBuffs_16"></h4>
+                <h6 id="multiAndRarityDisplay_16"></h6>
+                <button class="button1" onclick="addToSetup(16);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(16);">Remove from setup</button>
+            </div>
+            <div class="col-sm-3 border-1 text-center itemDisplay">
+                <h2 id="name_17"></h2>
+                <h2 id="item_17"></h2>
+                <h4 id="placed_17"></h4>
+                <h4 id="effectGiven_17"></h4>
+                <h4 id="effectBuffs_17"></h4>
+                <h6 id="multiAndRarityDisplay_17"></h6>
+                <button class="button1" onclick="addToSetup(17);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(17);">Remove from setup</button>
             </div>
             <!--Deletion Ends Here-->
         </div>
