@@ -270,7 +270,7 @@ var synBuff = 1;
 // Loops through the setup array for multipliers
 function goThroughSetup() {
     var tags = [];
-    if (hasDropper == true && hasProcessor == true) {
+    if (hasDropper && hasProcessor) {
         basicOre.multiply(setup[0].getMulti());
         for (var i = 1; i < setup.length; i++) {
             // Adds buffed effect to a list            
@@ -321,7 +321,7 @@ var presReq = 100;
 prestiges = 0;
 function prestige() { // Prestige Function
     if (lives >= presReq) {
-        for (var i = 0; i < items.length; i++) {
+        for (var i = setup.length - 1; i >= 0; i--) {
             if (items[i].getRarity() > 1 && items[i].getRarity() < 20) {
                 items[i].setPlaced(0);
                 items[i].setAmt(0);
@@ -334,11 +334,17 @@ function prestige() { // Prestige Function
                 removeFromSetup(setup[k].getId());
             }
         }
+        setup[0].addAmt();
+        setup[0].setPlaced(0);
+        setup[1].addAmt();
+        setup[1].setPlaced(0);
+        setup.splice(0, 2);
+        hasDropper = false;
+        hasProcessor = false;
         prestiges++;
         items[0].setAmt(1);
         items[2].setAmt(1);
-        hasDropper = false;
-        hasProcessor = false;
+        money = 0;
         lives = 0;
         presReq += 25;
         ascendCost = 10;
@@ -350,6 +356,8 @@ function prestige() { // Prestige Function
         var num = givePresItem()
         num.addAmt();
         saveData();
+        basicOre.changeTime();
+        addMoney();
     }
 }
 function givePresItem() { // Gives a prestige item
@@ -412,8 +420,18 @@ function rebirth() { // Rebirth Function
         rebirths++;
         items[0].setAmt(1);
         items[2].setAmt(1);
-        hasDropper = false;
-        hasProcessor = false;
+        if (setup.length > 1) {
+            if (!(setup[0].getType == "dropper")) {
+                hasDropper = false;
+            } else {
+                hasDropper = true;
+            }
+            if (!(setup[setup.length-1] == "processor")) {
+                hasProcessor = false;
+            } else {
+                hasProcessor = true;
+            }
+        }
         lives = 0;
         rebirthPresReq += 5;
         prestiges = 0;
@@ -426,6 +444,7 @@ function rebirth() { // Rebirth Function
         document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + setSuffix(ascendCost);
         var num = giveRebirthItem();
         num.addAmt();
+        addMoney();
         saveData();
     }
 }
@@ -580,4 +599,7 @@ function saveData() {
     localStorage.setItem(('saveRebirths'), JSON.stringify(rebirths));
     localStorage.setItem(('savePrestigeReq'), JSON.stringify(presReq));
     localStorage.setItem(('saveRebirthReq'), JSON.stringify(rebirthPresReq));
+}
+function clearData() {
+    localStorage.clear();
 }
