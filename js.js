@@ -328,23 +328,20 @@ prestiges = 0;
 function prestige() { // Prestige Function
     if (lives >= presReq) {
         for (var i = setup.length - 1; i >= 0; i--) {
-            if (items[i].getRarity() > 1 && items[i].getRarity() < 20) {
-                items[i].setPlaced(0);
-                items[i].setAmt(0);
-            }
-        }
-        for (var k = setup.length - 1; k >= 0; k--) {
-            if (setup[k].getRarity() > 1 && setup[k].getRarity() < 20) {
-                setup.splice(k, 1);
+            if (setup[i].getRarity() <= 1 || setup[i].getRarity() > 20) {
+                setup[i].addAmt();
+                setup[i].changePlaced(-1);
+                setup.splice(i, 1);
             } else {
-                removeFromSetup(setup[k].getId());
+                setup.splice(i, 1);
             }
         }
-        setup[0].addAmt();
-        setup[0].setPlaced(0);
-        setup[1].addAmt();
-        setup[1].setPlaced(0);
-        setup.splice(0, 2);
+        for (var k = 0; k < items.length; k++) {
+            if (items[k].getRarity() > 1 && items[k].getRarity() < 20) {
+                items[k].setAmt(0);
+                items[k].setPlaced(0);
+            }
+        }
         hasDropper = false;
         hasProcessor = false;
         prestiges++;
