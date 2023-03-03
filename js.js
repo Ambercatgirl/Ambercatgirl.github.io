@@ -435,7 +435,7 @@ function rebirth() { // Rebirth Function
         ascendCost = 10;
         document.getElementById("prestigesDisplay").innerHTML = "Prestige " + prestiges;
         document.getElementById("prestigeDisplay").innerHTML = "Prestige for " + presReq + " lives.";
-        document.getElementById("prestigeDisplay").innerHTML = "Rebirth:" + rebirthPresReq + "Prestiges.";
+        document.getElementById("prestigeDisplay").innerHTML = "Rebirth: " + rebirthPresReq + " Prestiges.";
         document.getElementById("livesDisplay").innerHTML = "Life " + 0;
         document.getElementById("moneyDisplay").innerHTML = "$" + 0;
         document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + setSuffix(ascendCost);
