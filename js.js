@@ -408,40 +408,34 @@ var rebirthPresReq = 25;
 var rebirths = 0;
 function rebirth() { // Rebirth Function
     if (prestiges >= rebirthPresReq) {
-        for (var i = 0; i < items.length; i++) {
-            if (items[i].getRarity() > 1 && items[i].getRarity() < 500) {
-                items[i].setAmt(0);
+        for (var i = setup.length - 1; i >= 0; i--) {
+            if (setup[i].getRarity() <= 1 || setup[i].getRarity() > 500) {
+                setup[i].addAmt();
+                setup[i].changePlaced(-1);
+                setup.splice(i, 1);
+            } else {
+                setup.splice(i, 1);
             }
         }
-        for (var k = setup.length - 1; k >= 0; k--) {
-            if (setup[k].getRarity() > 1 && items[k].getRarity() < 500) {
-                setup.splice(k, 1);
-            } else {
-                items[setup[k]].removeFromSetup(setup[k].getId());
+        for (var k = 0; k < items.length; k++) {
+            if (items[k].getRarity() > 1 && items[k].getRarity() < 500) {
+                items[k].setAmt(0);
+                items[k].setPlaced(0);
             }
         }
         rebirths++;
         items[0].setAmt(1);
         items[2].setAmt(1);
-        if (setup.length > 1) {
-            if (!(setup[0].getType == "dropper")) {
-                hasDropper = false;
-            } else {
-                hasDropper = true;
-            }
-            if (!(setup[setup.length - 1] == "processor")) {
-                hasProcessor = false;
-            } else {
-                hasProcessor = true;
-            }
-        }
+        hasDropper = false;
+        hasProcessor = false;
         lives = 0;
         rebirthPresReq += 5;
         prestiges = 0;
         presReq = 100;
         ascendCost = 10;
         document.getElementById("prestigesDisplay").innerHTML = "Prestige " + prestiges;
-        document.getElementById("rebirthDisplay").innerHTML = "Prestige for " + presReq + " lives.";
+        document.getElementById("prestigeDisplay").innerHTML = "Prestige for " + presReq + " lives.";
+        document.getElementById("prestigeDisplay").innerHTML = "Rebirth:" + rebirthPresReq + "Prestiges.";
         document.getElementById("livesDisplay").innerHTML = "Life " + 0;
         document.getElementById("moneyDisplay").innerHTML = "$" + 0;
         document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + setSuffix(ascendCost);
