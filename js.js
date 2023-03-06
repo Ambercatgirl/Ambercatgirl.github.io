@@ -303,17 +303,17 @@ function ascend() { // Ascension Function
     if (money >= ascendCost) {
         if (money >= (ascendCost * 1000000)) {
             giveItem(3);
-            ascendCost += Math.round(ascendCost / 2);
+            ascendCost = Math.round(ascendCost * 1.953125);
             money = 0;
             lives += 3;
         } else if (money >= (ascendCost * 1000)) {
             giveItem(2);
-            ascendCost += Math.round(ascendCost / 4);
+            ascendCost = Math.round(ascendCost * 1.5625);
             money = 0;
             lives += 2;
         } else if (money >= ascendCost) {
             giveItem(1);
-            ascendCost += Math.round(ascendCost / 8);
+            ascendCost = Math.round(ascendCost * 1.25);
             money = 0;
             lives++;
         }
