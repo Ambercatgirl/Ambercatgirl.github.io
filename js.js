@@ -406,7 +406,7 @@ function giveRebirthItem() {
     document.getElementById("newItemDisplay").innerHTML = "Recent Items: <br>" + temp.getName();
     temp.addAmt();
 }
-var rebirthPresReq = 25;
+var rebirthPresReq = 5;
 var rebirths = 0;
 function rebirth() { // Rebirth Function
     if (prestiges >= rebirthPresReq) {
@@ -431,7 +431,7 @@ function rebirth() { // Rebirth Function
         hasDropper = false;
         hasProcessor = false;
         lives = 0;
-        rebirthPresReq += 5;
+        rebirthPresReq ++;
         prestiges = 0;
         presReq = 100;
         ascendCost = 10;
