@@ -303,17 +303,17 @@ function ascend() { // Ascension Function
     if (money >= ascendCost) {
         if (money >= (ascendCost * 1000000)) {
             giveItem(3);
-            ascendCost = Math.round(ascendCost * 1.953125);
+            ascendCost = Math.round(ascendCost * 1.520875);
             money = 0;
             lives += 3;
         } else if (money >= (ascendCost * 1000)) {
             giveItem(2);
-            ascendCost = Math.round(ascendCost * 1.5625);
+            ascendCost = Math.round(ascendCost * 1.3225);
             money = 0;
             lives += 2;
         } else if (money >= ascendCost) {
             giveItem(1);
-            ascendCost = Math.round(ascendCost * 1.25);
+            ascendCost = Math.round(ascendCost * 1.15);
             money = 0;
             lives++;
         }
@@ -351,13 +351,12 @@ function prestige() { // Prestige Function
         lives = 0;
         presReq += 25;
         ascendCost = 10;
+        givePresItem();
         document.getElementById("prestigesDisplay").innerHTML = "Prestige " + prestiges;
         document.getElementById("prestigeDisplay").innerHTML = "Prestige for " + presReq + " lives.";
         document.getElementById("livesDisplay").innerHTML = "Life " + 0;
         document.getElementById("moneyDisplay").innerHTML = "$" + 0;
         document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + ascendCost;
-        var num = givePresItem()
-        num.addAmt();
         saveData();
         basicOre.changeTime();
         addMoney();
@@ -381,8 +380,9 @@ function givePresItem() { // Gives a prestige item
             itemsToGive.push(items[i]);
         }
     }
-    return itemsToGive[Math.floor(Math.random() * itemsToGive.length)];
-
+    var temp = itemsToGive[Math.floor(Math.random() * itemsToGive.length)];
+    document.getElementById("newItemDisplay").innerHTML = "Recent Items: <br>" + temp.getName();
+    temp.addAmt();
 }
 function giveRebirthItem() {
     var itemsGiven = 0;
@@ -402,7 +402,9 @@ function giveRebirthItem() {
             itemsToGive.push(items[i]);
         }
     }
-    return itemsToGive[Math.floor(Math.random() * itemsToGive.length)];
+    var temp = itemsToGive[Math.floor(Math.random() * itemsToGive.length)];
+    document.getElementById("newItemDisplay").innerHTML = "Recent Items: <br>" + temp.getName();
+    temp.addAmt();
 }
 var rebirthPresReq = 25;
 var rebirths = 0;
@@ -433,14 +435,13 @@ function rebirth() { // Rebirth Function
         prestiges = 0;
         presReq = 100;
         ascendCost = 10;
+        giveRebirthItem();
         document.getElementById("prestigesDisplay").innerHTML = "Prestige " + prestiges;
         document.getElementById("prestigeDisplay").innerHTML = "Prestige for " + presReq + " lives.";
         document.getElementById("prestigeDisplay").innerHTML = "Rebirth: " + rebirthPresReq + " Prestiges.";
         document.getElementById("livesDisplay").innerHTML = "Life " + 0;
         document.getElementById("moneyDisplay").innerHTML = "$" + 0;
         document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + setSuffix(ascendCost);
-        var num = giveRebirthItem();
-        num.addAmt();
         addMoney();
         saveData();
     }
@@ -512,6 +513,7 @@ function giveItem(amt) {
     }
     const canGive = [];
     const indexToGive = [];
+    var output = "Recent Items: <br>";
     for (var j = 0; j < rarityToGive.length; j++) {
         for (var i = 0; i < items.length; i++) {
             if (items[i].getRarity() == rarityToGive[j]) {
@@ -520,11 +522,12 @@ function giveItem(amt) {
             }
         }
         temp = Math.floor(Math.random() * canGive.length);
-        console.log(canGive[temp].getRarity() + ", " + canGive[temp].getMulti());
         canGive[temp].addAmt();
+        output += canGive[temp].getName() + "<br>";
         canGive.splice(0, canGive.length);
         indexToGive.splice(0, indexToGive.length);
     }
+    document.getElementById("newItemDisplay").innerHTML = output;
 
 }
 const suffixes = ["k", "M", "B", "T", "qd", "Qn", "Sx", "Sp", "O", "N", "de", "Ud", "DD"];
