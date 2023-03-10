@@ -523,7 +523,7 @@ function giveItem(amt) {
         }
         temp = Math.floor(Math.random() * canGive.length);
         canGive[temp].addAmt();
-        output += canGive[temp].getName() + "<br>";
+        output += canGive[temp].getName() + " | Rarity: " + canGive[temp].getRarity() + "<br>";
         canGive.splice(0, canGive.length);
         indexToGive.splice(0, indexToGive.length);
     }
