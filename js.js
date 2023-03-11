@@ -126,13 +126,13 @@ items.push(new createItem({itemName:'Candy Materializer',itemAmt:0,amountPlaced:
 items.push(new createItem({itemName:'Poison Dart Frog Injector',itemAmt:0,amountPlaced:0,itemMulti:1.2,itemType:'upgrader',effectGiven:'poison',givesBuff:'none',itemRarity:3,itemId:6}));
 items.push(new createItem({itemName:'Un-Frozen Pond',itemAmt:0,amountPlaced:0,itemMulti:1.3,itemType:'upgrader',effectGiven:'frozen',givesBuff:'none',itemRarity:2,itemId:7}));
 items.push(new createItem({itemName:'Elsa',itemAmt:0,amountPlaced:0,itemMulti:1.5,itemType:'upgrader',effectGiven:'none',givesBuff:'frozen',itemRarity:1,itemId:8}));
-items.push(new createItem({itemName:'Homemade Popsicle',itemAmt:0,amountPlaced:0,itemMulti:1.75,itemType:'upgrader',effectGiven:'none',givesBuff:'fire',itemRarity:0.5,itemId:9}));
+items.push(new createItem({itemName:'Homemade Popsicle',itemAmt:0,amountPlaced:0,itemMulti:1.4,itemType:'upgrader',effectGiven:'none',givesBuff:'fire',itemRarity:0.5,itemId:9}));
 items.push(new createItem({itemName:'Wasp Stingifier',itemAmt:0,amountPlaced:0,itemMulti:3,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:0.25,itemId:10}));
-items.push(new createItem({itemName:'Thriving Forest',itemAmt:0,amountPlaced:0,itemMulti:2.5,itemType:'upgrader',effectGiven:'fire',givesBuff:'none',itemRarity:0.1,itemId:11}));
+items.push(new createItem({itemName:'Thriving Forest',itemAmt:0,amountPlaced:0,itemMulti:3,itemType:'upgrader',effectGiven:'fire',givesBuff:'none',itemRarity:0.1,itemId:11}));
 items.push(new createItem({itemName:'Laser-Powered Garbage Can',itemAmt:0,amountPlaced:0,itemMulti:5,itemType:'processor',effectGiven:'none',givesBuff:'none',itemRarity:0.05,itemId:12}));
 items.push(new createItem({itemName:'Super-Duper-Long-Range-Freeze-Blaster',itemAmt:0,amountPlaced:0,itemMulti:10,itemType:'upgrader',effectGiven:'frozen',givesBuff:'none',itemRarity:0.01,itemId:13}));
 items.push(new createItem({itemName:'Antimatter Drill',itemAmt:0,amountPlaced:0,itemMulti:10,itemType:'dropper',effectGiven:'none',givesBuff:'none',itemRarity:100,itemId:14}));
-items.push(new createItem({itemName:'Fusion Reactor',itemAmt:0,amountPlaced:0,itemMulti:3,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:100,itemId:15}));
+items.push(new createItem({itemName:'Fusion Reactor',itemAmt:0,amountPlaced:0,itemMulti:4,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:100,itemId:15}));
 items.push(new createItem({itemName:'Godlike Annihalator',itemAmt:0,amountPlaced:0,itemMulti:20,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:1000,itemId:16}));
 items.push(new createItem({itemName:'The Power of The Sun',itemAmt:0,amountPlaced:0,itemMulti:15,itemType:'upgrader',effectGiven:'fire',givesBuff:'none',itemRarity:1000,itemId:17}));
 
