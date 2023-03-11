@@ -540,7 +540,7 @@ function giveItem(amt) {
     document.getElementById("newItemDisplay").innerHTML = output;
 
 }
-const suffixes = ["k", "M", "B", "T", "qd", "Qn", "Sx", "Sp", "O", "N", "de", "Ud", "DD", "tDD", "qdD", "QnD", "SxD", "SpD", "OvD", "NvD"];
+const suffixes = ["k", "M", "B", "T", "qd", "Qn", "Sx", "Sp", "O", "N", "de", "Ud", "DD", "tDD", "qdD", "QnD", "SxD", "SpD", "OcD", "NvD", "Vgn", "UVg", "DVg", "TVg", "qtV", "QnV", "SeV", "SPG", "OVG", "NVG", "TGN," "UTG", "DTG", "tsTG", "qtTG", "QnTG"];
 function setSuffix(value) {
     var multi = 1000;
     var temp = 0;
