@@ -191,6 +191,7 @@ function initialize() {
 }
 var currentDropperId = 0;
 function addToSetup(index) {
+    if (setup.length < 75) {
     // Makes sure the first item in the setup is a dropper
     if (items[index].getType() == "dropper" && items[index].getAmt() > 0) {
         if (hasDropper) {
@@ -243,6 +244,7 @@ function addToSetup(index) {
             items[index].changePlaced(1);
             document.getElementById(("placed_" + index)).innerHTML = items[index].getAmountPlaced() + " Placed.";
         }
+    }
     }
     basicOre.changeTime();
     if (hasDropper == true && hasProcessor == true) {
