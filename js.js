@@ -107,17 +107,12 @@ function initialize() {
         localStorage.clear();
         localStorage.setItem(("hasUpdated1"), JSON.stringify(true));
     }
-     var updated2 = localStorage.getItem("hasUpdated2");
-    if (!updated2) {
-        localStorage.setItem("SaveRebirthReq", 5);
-        localStorage.setItem(("hasUpdated2"), JSON.stringify(true));
-    }
     var updated4 = localStorage.getItem("hasUpdated4");
     if (!updated4) {
         localStorage.removeItem("SaveRebirthReq");
         localStorage.setItem("saveRebirthReq", 5);
         rebirthPresReq = JSON.parse(localStorage.getItem("saveRebirthReq"));
-        localStorage.setItem(("hasUpdated3"), JSON.stringify(true));
+        localStorage.setItem(("hasUpdated4"), JSON.stringify(true));
     }
     document.getElementById("start").style.display = "none";
     var playedBefore = localStorage.getItem("hasInitialized");
