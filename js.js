@@ -540,7 +540,8 @@ function giveItem(amt) {
     document.getElementById("newItemDisplay").innerHTML = output;
 
 }
-const suffixes = ["k", "M", "B", "T", "qd", "Qn", "Sx", "Sp", "O", "N", "de", "Ud", "DD", "tDD", "qdD", "QnD", "SxD", "SpD", "OcD", "NvD", "Vgn", "UVg", "DVg", "TVg", "qtV", "QnV", "SeV", "SPG", "OVG", "NVG", "TGN," "UTG", "DTG", "tsTG", "qtTG", "QnTG"];
+const suffixes = ["k","M","B","T","qd","Qn","sx","Sp","O","N","de","Ud","DD","tdD","qdD","QnD","sxD","SpD","OcD","NvD","Vgn","UVg","DVg","TVg","qtV","QnV","SeV","SPG","OVG","NVG","TGN","UTG","DTG","tsTG","qtTG","QnTG","ssTG","SpTG","OcTg","NoTG","QdDR","uQDR","dQDR","tQDR","qdQDR","QnQDR","sxQDR","SpQDR","OQDDr","NQDDr","qQGNT","uQGNT","dQGNT","tQGNT","qdQGNT","QnQGNT","sxQGNT","SpQGNT","OQQGNT","NQQGNT","SXGNTL","USXGNTL","DSXGNTL","TSXGNTL","QTSXGNTL","QNSXGNTL","SXSXGNTL","SPSXGNTL","OSXGNTL","NVSXGNTL","SPTGNTL","USPTGNTL","DSPTGNTL","TSPTGNTL","QTSPTGNTL","QNSPTGNTL","SXSPTGNTL","SPSPTGNTL","OSPTGNTL","NVSPTGNTL","OTGNTL","UOTGNTL","DOTGNTL","TOTGNTL","QTOTGNTL","QNOTGNTL","SXOTGNTL","SPOTGNTL","OTOTGNTL","NVOTGNTL","NONGNTL","UNONGNTL","DNONGNTL","TNONGNTL","QTNONGNTL","QNNONGNTL","SXNONGNTL","SPNONGNTL","OTNONGNTL","NONONGNTL","CENT"];
+
 function setSuffix(value) {
     var multi = 1000;
     var temp = 0;
