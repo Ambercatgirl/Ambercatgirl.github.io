@@ -112,9 +112,10 @@ function initialize() {
         localStorage.setItem("SaveRebirthReq", 5);
         localStorage.setItem(("hasUpdated2"), JSON.stringify(true));
     }
-    var updated3 = localStorage.getItem("hasUpdated3");
-    if (!updated3) {
-        localStorage.setItem("SaveRebirthReq", 5);
+    var updated4 = localStorage.getItem("hasUpdated4");
+    if (!updated4) {
+        localStorage.removeItem("SaveRebirthReq");
+        localStorage.setItem("saveRebirthReq", 5);
         rebirthPresReq = JSON.parse(localStorage.getItem("saveRebirthReq"));
         localStorage.setItem(("hasUpdated3"), JSON.stringify(true));
     }
