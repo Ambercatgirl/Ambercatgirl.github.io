@@ -112,6 +112,12 @@ function initialize() {
         localStorage.setItem("SaveRebirthReq", 5);
         localStorage.setItem(("hasUpdated2"), JSON.stringify(true));
     }
+    var updated3 = localStorage.getItem("hasUpdated3");
+    if (!updated3) {
+        localStorage.setItem("SaveRebirthReq", 5);
+        rebirthPresReq = JSON.parse(localStorage.getItem("saveRebirthReq"));
+        localStorage.setItem(("hasUpdated3"), JSON.stringify(true));
+    }
     document.getElementById("start").style.display = "none";
     var playedBefore = localStorage.getItem("hasInitialized");
     // Start Deletion Here
