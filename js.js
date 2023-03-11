@@ -192,7 +192,6 @@ items.push(new createItem({itemName:'The Power of The Sun',itemAmt:0,amountPlace
 }
 var currentDropperId = 0;
 function addToSetup(index) {
-    if (setup.length < 75) {
     // Makes sure the first item in the setup is a dropper
     if (items[index].getType() == "dropper" && items[index].getAmt() > 0) {
         if (hasDropper) {
@@ -230,6 +229,7 @@ function addToSetup(index) {
             hasProcessor = true;
         }
     }
+    if (setup.length < 75) {
     // Adds upgraders to the middle, making sure to be in between a dropper and processor
     if (items[index].getType() == "upgrader" && hasDropper && items[index].getAmt() > 0) {
         if (hasProcessor) {
