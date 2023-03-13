@@ -343,6 +343,7 @@ function ascend() { // Ascension Function
     var toPower = 1;
     var skipped = 0;
     if (money > ascendCost) {
+        ascendCost *= 1.15;
         for (var s = 0; s < 20; s++) {
         if (money > ascendCost * Math.pow(2, toPower)) {
             toPower++;
@@ -352,9 +353,7 @@ function ascend() { // Ascension Function
             } else {
                 ascendCost = 1e+201;
             }
-        } else {
-            ascendCost *= 1.15;
-        }
+        } 
     }
     lives += skipped + 1;
     if (skipped >= 20) {
