@@ -2,7 +2,8 @@ var upgBought = 0;
 class createOre {
     constructor(obj) {
         this.amt = obj.amt;
-        this.timeMulti = obj.timeMulti
+        this.timeMulti = obj.timeMulti;
+        this.cap = obj.cap;
         this.time = (setup.length * this.timeMulti) * 1000;
     }
     multiply(num) { // Used to multiply ore value in the setup.
@@ -19,6 +20,9 @@ class createOre {
     }
     changeTime() { // Updates the time between ores selling.
         this.time = (setup.length * this.timeMulti) * 1000;
+        if (this.time > 7500 * this.cap) {
+            this.time = 7500 * this.cap;
+        }
         addMoney();
     }
     changeTimeMulti() {
@@ -30,6 +34,9 @@ class createOre {
     }
     getTimeMulti() {
         return this.timeMulti;
+    }
+    changeCap() {
+        this.cap--;
     }
 }
 class createItem {
@@ -114,7 +121,6 @@ function initialize() {
         rebirthPresReq = JSON.parse(localStorage.getItem("saveRebirthReq"));
         localStorage.setItem(("hasUpdated4"), JSON.stringify(true));
     }
-    document.getElementById("start").style.display = "none";
     var playedBefore = localStorage.getItem("hasInitialized");
     // Start Deletion Here
     items.push(new createItem({itemName:'Basic Dropper',itemAmt:1,amountPlaced:0,itemMulti:1,itemType:'dropper',effectGiven:'none',givesBuff:'none',itemRarity:7,itemId:0}));
@@ -186,7 +192,7 @@ items.push(new createItem({itemName:'Pyrmidal Complex',itemAmt:0,amountPlaced:0,
         rebirths = JSON.parse(localStorage.getItem("saveRebirths"));
         prestiges = JSON.parse(localStorage.getItem("savePrestiges"));
     } else {
-        basicOre = new createOre({ amt: 1, timeMulti: 0.75 });
+        basicOre = new createOre({ amt: 1, timeMulti: 0.75, cap: 11});
         addToSetup(0);
         addToSetup(2);
     }
@@ -210,6 +216,9 @@ items.push(new createItem({itemName:'Pyrmidal Complex',itemAmt:0,amountPlaced:0,
     window.localStorage.setItem("hasInitialized", "true");
     saveData();
     autoSave();
+    if (upg1Cost == 25600) {
+        document.getElementById("upgradeDisplay").style.display = "none";
+    }
 }
 var currentDropperId = 0;
 function addToSetup(index) {
@@ -251,6 +260,7 @@ function addToSetup(index) {
         }
     }
     // Adds upgraders to the middle, making sure to be in between a dropper and processor
+    if (setup.length < 75) {
     if (items[index].getType() == "upgrader" && hasDropper && items[index].getAmt() > 0) {
         if (hasProcessor) {
             var temp = setup[setup.length - 1];
@@ -266,6 +276,7 @@ function addToSetup(index) {
             document.getElementById(("placed_" + index)).innerHTML = items[index].getAmountPlaced() + " Placed.";
         }
     }
+}
     basicOre.changeTime();
     if (hasDropper == true && hasProcessor == true) {
         addMoney();
@@ -329,40 +340,34 @@ function goThroughSetup() {
 var ascendCost = 10;
 var lives = 0;
 function ascend() { // Ascension Function
-    if (money >= ascendCost) {
-        if (money >= (ascendCost * 1000000)) {
-            giveItem(3);
-            if (ascendCost < 1e+101) {
-                ascendCost = Math.round(ascendCost * 1.520875);
+    var toPower = 1;
+    var skipped = 0;
+    if (money > ascendCost) {
+        for (var s = 0; s < 20; s++) {
+        if (money > Math.pow(2, toPower)) {
+            toPower++;
+            skipped++;
+            if (ascendCost < 1e+201) {
+                ascendCost *= 1.15;
             } else {
-                ascendCost = 1e+101;
+                ascendCost = 1e+201;
             }
-            money = 0;
-            lives += 3;
-        } else if (money >= (ascendCost * 1000)) {
-            giveItem(2);
-            if (ascendCost < 1e+101) {
-                ascendCost = Math.round(ascendCost * 1.3225);
-            } else {
-                ascendCost = 1e+101;
-            }
-            money = 0;
-            lives += 2;
-        } else if (money >= ascendCost) {
-            giveItem(1);
-            if (ascendCost < 1e+101) {
-                ascendCost = Math.round(ascendCost * 1.15);
-            } else {
-                ascendCost = 1e+101;
-            }
-            money = 0;
-            lives++;
         }
+    }
+    lives += skipped + 1;
+    if (skipped >= 20) {
+        giveItem(3);
+    } else if (skipped >= 10) {
+        giveItem(2);
+    } else {
+        giveItem(1);
+    }
+    money = 0;
         document.getElementById("livesDisplay").innerHTML = "Life " + lives;
         document.getElementById("moneyDisplay").innerHTML = "$" + setSuffix(money);
         document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + setSuffix(ascendCost);
         saveData();
-    }
+    }    
 }
 var presReq = 100;
 prestiges = 0;
@@ -477,6 +482,7 @@ function rebirth() { // Rebirth Function
         if (rebirthPresReq < 50) {
             rebirthPresReq ++;
         }
+        changeCap();
         prestiges = 0;
         presReq = 100;
         ascendCost = 10;
@@ -499,6 +505,9 @@ function upgradeSpeed() { // Increases Setup Speed
         upg1Cost *= 2;
         document.getElementById("moneyDisplay").innerHTML = "$" + setSuffix(money);
         document.getElementById("upgradeDisplay").innerHTML = "Increase Setup Speed: $" + upg1Cost;
+    }
+    if (upg1Cost == 25600) {
+        document.getElementById("upgradeDisplay").style.display = "none";
     }
     saveData();
 }
