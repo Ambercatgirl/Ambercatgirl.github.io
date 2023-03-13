@@ -192,10 +192,13 @@ items.push(new createItem({itemName:'Pyrmidal Complex',itemAmt:0,amountPlaced:0,
         rebirths = JSON.parse(localStorage.getItem("saveRebirths"));
         prestiges = JSON.parse(localStorage.getItem("savePrestiges"));
     } else {
+        canSkip = true;
         basicOre = new createOre({ amt: 1, timeMulti: 0.75, cap: 11});
         addToSetup(0);
         addToSetup(2);
     }
+    canSkip = JSON.parse(localStorage.getItem("saveCanSkip"));
+    document.getElementById("canSkipCheck").checked = canSkip;
     addMoney();
     for (var i = 0; i < items.length; i++) {
         document.getElementById(("name_") + i).innerHTML = items[i].getName();
@@ -344,7 +347,8 @@ function ascend() { // Ascension Function
     var skipped = 0;
     if (money > ascendCost) {
         ascendCost *= 1.15;
-        for (var s = 0; s < 20; s++) {
+        if (canSkip) {
+           for (var s = 0; s < 20; s++) {
         if (money > ascendCost * Math.pow(2, toPower)) {
             toPower++;
             skipped++;
@@ -354,7 +358,9 @@ function ascend() { // Ascension Function
                 ascendCost = 1e+201;
             }
         } 
-    }
+    } 
+        }
+        
     lives += skipped + 1;
     if (skipped >= 20) {
         giveItem(3);
@@ -363,7 +369,7 @@ function ascend() { // Ascension Function
     } else {
         giveItem(1);
     }
-    money = 0;
+        money = 0;
         document.getElementById("livesDisplay").innerHTML = "Life " + lives;
         document.getElementById("moneyDisplay").innerHTML = "$" + setSuffix(money);
         document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + setSuffix(ascendCost);
@@ -659,6 +665,10 @@ function saveData() {
     localStorage.setItem(('saveRebirths'), JSON.stringify(rebirths));
     localStorage.setItem(('savePrestigeReq'), JSON.stringify(presReq));
     localStorage.setItem(('saveRebirthReq'), JSON.stringify(rebirthPresReq));
+    localStorage.setItem(('saveCanSkip'), JSON.stringify(canSkip));
+}
+function changeSkipState() {
+    canSkip = !(canSkip)
 }
 function clearData() {
     localStorage.clear();
