@@ -332,17 +332,29 @@ function ascend() { // Ascension Function
     if (money >= ascendCost) {
         if (money >= (ascendCost * 1000000)) {
             giveItem(3);
-            ascendCost = Math.round(ascendCost * 1.520875);
+            if (ascendCost < 1e+101) {
+                ascendCost = Math.round(ascendCost * 1.520875);
+            } else {
+                ascendCost = 1e+101;
+            }
             money = 0;
             lives += 3;
         } else if (money >= (ascendCost * 1000)) {
             giveItem(2);
-            ascendCost = Math.round(ascendCost * 1.3225);
+            if (ascendCost < 1e+101) {
+                ascendCost = Math.round(ascendCost * 1.3225);
+            } else {
+                ascendCost = 1e+101;
+            }
             money = 0;
             lives += 2;
         } else if (money >= ascendCost) {
             giveItem(1);
-            ascendCost = Math.round(ascendCost * 1.15);
+            if (ascendCost < 1e+101) {
+                ascendCost = Math.round(ascendCost * 1.15);
+            } else {
+                ascendCost = 1e+101;
+            }
             money = 0;
             lives++;
         }
@@ -378,7 +390,9 @@ function prestige() { // Prestige Function
         items[2].setAmt(1);
         money = 0;
         lives = 0;
-        presReq += 25;
+        if (presReq < 4500) {
+            presReq += 25;
+        }
         ascendCost = 10;
         givePresItem();
         document.getElementById("prestigesDisplay").innerHTML = "Prestige " + prestiges;
@@ -460,7 +474,9 @@ function rebirth() { // Rebirth Function
         hasDropper = false;
         hasProcessor = false;
         lives = 0;
-        rebirthPresReq ++;
+        if (rebirthPresReq < 50) {
+            rebirthPresReq ++;
+        }
         prestiges = 0;
         presReq = 100;
         ascendCost = 10;
