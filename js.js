@@ -352,6 +352,8 @@ function ascend() { // Ascension Function
             } else {
                 ascendCost = 1e+201;
             }
+        } else {
+            ascendCost *= 1.15;
         }
     }
     lives += skipped + 1;
