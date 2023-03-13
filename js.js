@@ -669,6 +669,7 @@ function saveData() {
 }
 function changeSkipState() {
     canSkip = !(canSkip)
+    saveData();
 }
 function clearData() {
     localStorage.clear();
