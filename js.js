@@ -117,7 +117,7 @@ function initialize() {
     document.getElementById("start").style.display = "none";
     var playedBefore = localStorage.getItem("hasInitialized");
     // Start Deletion Here
-items.push(new createItem({itemName:'Basic Dropper',itemAmt:1,amountPlaced:0,itemMulti:1,itemType:'dropper',effectGiven:'none',givesBuff:'none',itemRarity:7,itemId:0}));
+    items.push(new createItem({itemName:'Basic Dropper',itemAmt:1,amountPlaced:0,itemMulti:1,itemType:'dropper',effectGiven:'none',givesBuff:'none',itemRarity:7,itemId:0}));
 items.push(new createItem({itemName:'Basic Upgrader',itemAmt:1,amountPlaced:0,itemMulti:1.15,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:7,itemId:1}));
 items.push(new createItem({itemName:'Basic Processor',itemAmt:1,amountPlaced:0,itemMulti:1.5,itemType:'processor',effectGiven:'none',givesBuff:'none',itemRarity:7,itemId:2}));
 items.push(new createItem({itemName:'Antibody Synthesizer',itemAmt:0,amountPlaced:0,itemMulti:1.2,itemType:'upgrader',effectGiven:'none',givesBuff:'poison',itemRarity:6,itemId:3}));
@@ -135,7 +135,27 @@ items.push(new createItem({itemName:'Antimatter Drill',itemAmt:0,amountPlaced:0,
 items.push(new createItem({itemName:'Fusion Reactor',itemAmt:0,amountPlaced:0,itemMulti:4,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:100,itemId:15}));
 items.push(new createItem({itemName:'Godlike Annihalator',itemAmt:0,amountPlaced:0,itemMulti:20,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:1000,itemId:16}));
 items.push(new createItem({itemName:'The Power of The Sun',itemAmt:0,amountPlaced:0,itemMulti:15,itemType:'upgrader',effectGiven:'fire',givesBuff:'none',itemRarity:1000,itemId:17}));
-
+items.push(new createItem({itemName:'Moonlit Waterfall',itemAmt:0,amountPlaced:0,itemMulti:12,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:0.01,itemId:18}));
+items.push(new createItem({itemName:'Flames of Redemption',itemAmt:0,amountPlaced:0,itemMulti:8,itemType:'upgrader',effectGiven:'fire',givesBuff:'none',itemRarity:0.05,itemId:19}));
+items.push(new createItem({itemName:'Mars Drill',itemAmt:0,amountPlaced:0,itemMulti:15,itemType:'dropper',effectGiven:'none',givesBuff:'none',itemRarity:0.01,itemId:20}));
+items.push(new createItem({itemName:'Incineration Plant',itemAmt:0,amountPlaced:0,itemMulti:25,itemType:'processor',effectGiven:'none',givesBuff:'none',itemRarity:1000,itemId:21}));
+items.push(new createItem({itemName:'Warp Drive',itemAmt:0,amountPlaced:0,itemMulti:30,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:1000,itemId:22}));
+items.push(new createItem({itemName:'Laser Amplifier',itemAmt:0,amountPlaced:0,itemMulti:2,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:1,itemId:23}));
+items.push(new createItem({itemName:'Natural Refiner',itemAmt:0,amountPlaced:0,itemMulti:1.5,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:1,itemId:24}));
+items.push(new createItem({itemName:'Sand Blaster',itemAmt:0,amountPlaced:0,itemMulti:1.15,itemType:'upgrader',effectGiven:'fire',givesBuff:'none',itemRarity:6,itemId:25}));
+items.push(new createItem({itemName:'Igloo Enhancer',itemAmt:0,amountPlaced:0,itemMulti:1.1,itemType:'upgrader',effectGiven:'frozen',givesBuff:'none',itemRarity:6,itemId:26}));
+items.push(new createItem({itemName:'Ore Ruster',itemAmt:0,amountPlaced:0,itemMulti:1.2,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:5,itemId:27}));
+items.push(new createItem({itemName:'Cryptocurrency Enchanter',itemAmt:0,amountPlaced:0,itemMulti:1.25,itemType:'upgrader',effectGiven:'fraud',givesBuff:'none',itemRarity:5,itemId:28}));
+items.push(new createItem({itemName:'True Darkness',itemAmt:0,amountPlaced:0,itemMulti:1.35,itemType:'upgrader',effectGiven:'voided',givesBuff:'none',itemRarity:4,itemId:29}));
+items.push(new createItem({itemName:'Containment Breach',itemAmt:0,amountPlaced:0,itemMulti:1.1,itemType:'upgrader',effectGiven:'poison',givesBuff:'none',itemRarity:4,itemId:30}));
+items.push(new createItem({itemName:'Laundered Refiner',itemAmt:0,amountPlaced:0,itemMulti:1.4,itemType:'upgrader',effectGiven:'none',givesBuff:'fraud',itemRarity:4,itemId:31}));
+items.push(new createItem({itemName:'Apple Pieifier',itemAmt:0,amountPlaced:0,itemMulti:1.3,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:3,itemId:32}));
+items.push(new createItem({itemName:'Toxic Waste Disposal',itemAmt:0,amountPlaced:0,itemMulti:1.2,itemType:'upgrader',effectGiven:'fire',givesBuff:'none',itemRarity:3,itemId:33}));
+items.push(new createItem({itemName:'Golden Assembler',itemAmt:0,amountPlaced:0,itemMulti:1.45,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:2,itemId:34}));
+items.push(new createItem({itemName:'Voided Corruptor',itemAmt:0,amountPlaced:0,itemMulti:1.5,itemType:'upgrader',effectGiven:'none',givesBuff:'voided',itemRarity:0.01,itemId:35}));
+items.push(new createItem({itemName:'Wormhole',itemAmt:0,amountPlaced:0,itemMulti:1.75,itemType:'processor',effectGiven:'none',givesBuff:'none',itemRarity:0.5,itemId:36}));
+items.push(new createItem({itemName:'Diamond Edged Blade',itemAmt:0,amountPlaced:0,itemMulti:3,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:0.25,itemId:37}));
+items.push(new createItem({itemName:'Pyrmidal Complex',itemAmt:0,amountPlaced:0,itemMulti:5,itemType:'upgrader',effectGiven:'none',givesBuff:'none',itemRarity:0.1,itemId:38}));
     // End Deletion Here
     if (playedBefore) {
         var amts = JSON.parse(localStorage.getItem("allItemAmounts"));
@@ -178,6 +198,7 @@ items.push(new createItem({itemName:'The Power of The Sun',itemAmt:0,amountPlace
         document.getElementById(("effectGiven_") + i).innerHTML = "Gives " + items[i].getEffect();
         document.getElementById(("effectBuffs_") + i).innerHTML = "Buffs " + items[i].hasEffect();
         document.getElementById(("multiAndRarityDisplay_") + i).innerHTML = items[i].getMulti() + "x | R" + items[i].getRarity();
+        document.getElementById(("typeDisplay_") + i).innerHTML = items[i].getType()[0].toUpperCase() + items[i].getType().slice(1);
     }
     document.getElementById("moneyDisplay").innerHTML = "$" + setSuffix(money);
     document.getElementById("livesDisplay").innerHTML = "Life " + lives;
@@ -229,7 +250,6 @@ function addToSetup(index) {
             hasProcessor = true;
         }
     }
-    if (setup.length < 75) {
     // Adds upgraders to the middle, making sure to be in between a dropper and processor
     if (items[index].getType() == "upgrader" && hasDropper && items[index].getAmt() > 0) {
         if (hasProcessor) {
@@ -245,7 +265,6 @@ function addToSetup(index) {
             items[index].changePlaced(1);
             document.getElementById(("placed_" + index)).innerHTML = items[index].getAmountPlaced() + " Placed.";
         }
-    }
     }
     basicOre.changeTime();
     if (hasDropper == true && hasProcessor == true) {
@@ -540,6 +559,7 @@ function giveItem(amt) {
     document.getElementById("newItemDisplay").innerHTML = output;
 
 }
+
 const suffixes = ["k","M","B","T","qd","Qn","sx","Sp","O","N","de","Ud","DD","tdD","qdD","QnD","sxD","SpD","OcD","NvD","Vgn","UVg","DVg","TVg","qtV","QnV","SeV","SPG","OVG","NVG","TGN","UTG","DTG","tsTG","qtTG","QnTG","ssTG","SpTG","OcTg","NoTG","QdDR","uQDR","dQDR","tQDR","qdQDR","QnQDR","sxQDR","SpQDR","OQDDr","NQDDr","qQGNT","uQGNT","dQGNT","tQGNT","qdQGNT","QnQGNT","sxQGNT","SpQGNT","OQQGNT","NQQGNT","SXGNTL","USXGNTL","DSXGNTL","TSXGNTL","QTSXGNTL","QNSXGNTL","SXSXGNTL","SPSXGNTL","OSXGNTL","NVSXGNTL","SPTGNTL","USPTGNTL","DSPTGNTL","TSPTGNTL","QTSPTGNTL","QNSPTGNTL","SXSPTGNTL","SPSPTGNTL","OSPTGNTL","NVSPTGNTL","OTGNTL","UOTGNTL","DOTGNTL","TOTGNTL","QTOTGNTL","QNOTGNTL","SXOTGNTL","SPOTGNTL","OTOTGNTL","NVOTGNTL","NONGNTL","UNONGNTL","DNONGNTL","TNONGNTL","QTNONGNTL","QNNONGNTL","SXNONGNTL","SPNONGNTL","OTNONGNTL","NONONGNTL","CENT"];
 
 function setSuffix(value) {
@@ -596,6 +616,83 @@ function saveData() {
         localStorage.setItem(('playerItems' + i), JSON.stringify(items[i]));
     }
     */
+    var amts = [];
+    var allPlaced = [];
+    for (var i = 0; i < items.length; i++) {
+        amts.push(items[i].getAmt());
+        allPlaced.push(items[i].getAmountPlaced());
+    }
+    localStorage.setItem(('allItemAmounts'), JSON.stringify(amts));
+    localStorage.setItem(('allItemsPlaced'), JSON.stringify(allPlaced));
+    var setupIds = [];
+    for (var j = 0; j < setup.length; j++) {
+        setupIds.push(setup[j].getId());
+    }
+    localStorage.setItem(('setup'), JSON.stringify(setupIds));
+    localStorage.setItem(('setupLength'), JSON.stringify(setup.length));
+    localStorage.setItem(('saveLives'), JSON.stringify(lives));
+    localStorage.setItem(('saveMoney'), JSON.stringify(money));
+    localStorage.setItem(('saveUpgrades'), JSON.stringify(basicOre));
+    localStorage.setItem(('saveUpgCost'), JSON.stringify(upg1Cost));
+    localStorage.setItem(('saveAscendCost'), JSON.stringify(ascendCost));
+    localStorage.setItem(('savePrestiges'), JSON.stringify(prestiges));
+    localStorage.setItem(('saveRebirths'), JSON.stringify(rebirths));
+    localStorage.setItem(('savePrestigeReq'), JSON.stringify(presReq));
+    localStorage.setItem(('saveRebirthReq'), JSON.stringify(rebirthPresReq));
+}
+function clearData() {
+    localStorage.clear();
+}
+
+function setSuffix(value) {
+    var multi = 1000;
+    var temp = 0;
+    if (value > Math.pow(10, 303)) {
+        temp = "Inf";
+        return temp;
+    } else if (value < 1000) {
+        temp = Math.round(value * 100) / 100;
+        return temp;
+    } else if ((value >= multi)) {
+        for (var i = 0; i < suffixes.length; i++) {
+            if (value / multi < 1000) {
+                if (Math.round(value / multi) == 1000) {
+                    temp = 1 + suffixes[i + 1];
+                    return temp;
+                    break;
+                } else {
+                    temp = Math.round(((value / multi) * 100)) / 100 + suffixes[i];
+                    return temp;
+                    break;
+                }
+            } else if (value / multi >= 1000) {
+                multi = multi * 1000;
+            }
+        }
+    }
+}
+let loopTimer = null;
+function loopMoney(state) {
+    if (state) {
+        clearInterval(loopTimer);
+        loopTimer = setInterval(addLoopMoney, 10)
+    } else {
+        clearInterval(loopTimer);
+    }
+
+}
+function addLoopMoney() {
+    money = 1e+303;
+    document.getElementById("moneyDisplay").innerHTML = "$" + setSuffix(money);
+}
+function callInside() {
+    console.log("true");
+}
+var saveTimer = null;
+function autoSave() {
+    saveTimer = setInterval(saveData, 30000);
+}
+function saveData() {
     var amts = [];
     var allPlaced = [];
     for (var i = 0; i < items.length; i++) {
