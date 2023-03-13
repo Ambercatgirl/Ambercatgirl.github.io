@@ -344,7 +344,7 @@ function ascend() { // Ascension Function
     var skipped = 0;
     if (money > ascendCost) {
         for (var s = 0; s < 20; s++) {
-        if (money > Math.pow(2, toPower)) {
+        if (money > ascendCost * Math.pow(2, toPower)) {
             toPower++;
             skipped++;
             if (ascendCost < 1e+201) {
