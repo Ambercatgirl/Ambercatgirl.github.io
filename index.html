@@ -9,7 +9,7 @@
         crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
-            $('[data-toggle="popover"]').popover();  
+            $('[data-toggle="popover"]').popover();
             initialize();
         });
     </script>
@@ -20,453 +20,431 @@
 
     <div class="container-fluid">
         <br>
-        <br>
-        <button class="button2 button4" id="ascendDisplay" onclick="ascend();">Ascend for $10</button>
-        <button class="button2" onclick="withdrawAll();">Withdraw All</button>
-        <button class="button2" id="prestigeDisplay" onclick="prestige();">Prestige: 100 Lives</button>
-        <button class="button2" id="rebirthDisplay" onclick="rebirth();">Rebirth: 5 Prestiges</button>
-        <button class="button2" id="upgradeDisplay" onclick="upgradeSpeed();">Increase Setup Speed: $25</button>
-        <button class="button3" onclick="saveData();">Save Data</button>
-        <a href = "changelog.html" onclick="saveData()">Changelogs</a>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-sm-3">
-                <h3 id="moneyDisplay">$0</h1>
-                <h3 id="livesDisplay">Life 0</h1>
-                <h3 id="prestigesDisplay">Prestige 0</h3>
-                    <h2>Allow Skipping?</h2>
+        <div class="buttonArea">
+            <div class="row">
+                <h3 id="moneyDisplay" class="displayArea valueDisplay">$0</h1>
+                    <h3 id="livesDisplay" class="displayArea valueDisplay">Life 0</h1>
+                        <h3 id="prestigesDisplay" class="displayArea valueDisplay">Prestige 0</h3>
+                        <a href="changelog.html" class="displayArea" style="color:red; height:30px;"
+                            onclick="saveData()">Changelogs</a>
+                        <button class="button3" onclick="saveData();">Save Data</button>
+            </div>
+        </div>
+        <div class="buttonArea">
+            <div class="row">
+                <button class="button2 button4" id="ascendDisplay" onclick="ascend();">Ascend for $10</button>
+                <button class="button2" onclick="withdrawAll();">Withdraw All</button>
+                <button class="button2" id="prestigeDisplay" onclick="prestige();">Prestige: 100 Lives</button>
+                <button class="button2" id="rebirthDisplay" onclick="rebirth();">Rebirth: 5 Prestiges</button>
+                <button class="button2" id="upgradeDisplay" onclick="upgradeSpeed();">Increase Setup Speed: $25</button>
+            </div>
+        </div>
+        <div class="row bottomArea">
+                <div id="newItemDisplay" class="text-center recentItems displayArea"
+                    style="height:150px; width:650px !important;">Recent Items:
+                </div>
+                <div class="displayArea" style="width:300px !important; height:100px !important;">
+                    <h4>Allow Skipping?</h4>
                     <label class="switch">
                         <input id="canSkipCheck" type="checkbox" checked onclick="changeSkipState()">
                         <span class="slider"></span>
                     </label>
+                
             </div>
-            <div class="col-sm-7">
-                <div id="newItemDisplay" class="text-center border-1 itemDisplay" style="height:150px;">Recent Items:
-                </div>
-            </div>
-
-            </row>
-            <div class="row">
-
-                <!--Deletion Starts Here-->
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_2"></h2>
-                    <h2 id="item_2"></h2>
-                    <h4 id="placed_2"></h4>
-                    <h4 id="effectGiven_2"></h4>
-                    <h4 id="effectBuffs_2"></h4>
-                    <h6 id="multiAndRarityDisplay_2"></h6>
-                    <h6 id="typeDisplay_2"></h6><button class="button1" onclick="addToSetup(2);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(2);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_0"></h2>
-                    <h2 id="item_0"></h2>
-                    <h4 id="placed_0"></h4>
-                    <h4 id="effectGiven_0"></h4>
-                    <h4 id="effectBuffs_0"></h4>
-                    <h6 id="multiAndRarityDisplay_0"></h6>
-                    <h6 id="typeDisplay_0"></h6><button class="button1" onclick="addToSetup(0);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(0);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_1"></h2>
-                    <h2 id="item_1"></h2>
-                    <h4 id="placed_1"></h4>
-                    <h4 id="effectGiven_1"></h4>
-                    <h4 id="effectBuffs_1"></h4>
-                    <h6 id="multiAndRarityDisplay_1"></h6>
-                    <h6 id="typeDisplay_1"></h6><button class="button1" onclick="addToSetup(1);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(1);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_25"></h2>
-                    <h2 id="item_25"></h2>
-                    <h4 id="placed_25"></h4>
-                    <h4 id="effectGiven_25"></h4>
-                    <h4 id="effectBuffs_25"></h4>
-                    <h6 id="multiAndRarityDisplay_25"></h6>
-                    <h6 id="typeDisplay_25"></h6><button class="button1" onclick="addToSetup(25);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(25);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_3"></h2>
-                    <h2 id="item_3"></h2>
-                    <h4 id="placed_3"></h4>
-                    <h4 id="effectGiven_3"></h4>
-                    <h4 id="effectBuffs_3"></h4>
-                    <h6 id="multiAndRarityDisplay_3"></h6>
-                    <h6 id="typeDisplay_3"></h6><button class="button1" onclick="addToSetup(3);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(3);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_26"></h2>
-                    <h2 id="item_26"></h2>
-                    <h4 id="placed_26"></h4>
-                    <h4 id="effectGiven_26"></h4>
-                    <h4 id="effectBuffs_26"></h4>
-                    <h6 id="multiAndRarityDisplay_26"></h6>
-                    <h6 id="typeDisplay_26"></h6><button class="button1" onclick="addToSetup(26);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(26);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_4"></h2>
-                    <h2 id="item_4"></h2>
-                    <h4 id="placed_4"></h4>
-                    <h4 id="effectGiven_4"></h4>
-                    <h4 id="effectBuffs_4"></h4>
-                    <h6 id="multiAndRarityDisplay_4"></h6>
-                    <h6 id="typeDisplay_4"></h6><button class="button1" onclick="addToSetup(4);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(4);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_28"></h2>
-                    <h2 id="item_28"></h2>
-                    <h4 id="placed_28"></h4>
-                    <h4 id="effectGiven_28"></h4>
-                    <h4 id="effectBuffs_28"></h4>
-                    <h6 id="multiAndRarityDisplay_28"></h6>
-                    <h6 id="typeDisplay_28"></h6><button class="button1" onclick="addToSetup(28);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(28);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_27"></h2>
-                    <h2 id="item_27"></h2>
-                    <h4 id="placed_27"></h4>
-                    <h4 id="effectGiven_27"></h4>
-                    <h4 id="effectBuffs_27"></h4>
-                    <h6 id="multiAndRarityDisplay_27"></h6>
-                    <h6 id="typeDisplay_27"></h6><button class="button1" onclick="addToSetup(27);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(27);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_5"></h2>
-                    <h2 id="item_5"></h2>
-                    <h4 id="placed_5"></h4>
-                    <h4 id="effectGiven_5"></h4>
-                    <h4 id="effectBuffs_5"></h4>
-                    <h6 id="multiAndRarityDisplay_5"></h6>
-                    <h6 id="typeDisplay_5"></h6><button class="button1" onclick="addToSetup(5);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(5);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_31"></h2>
-                    <h2 id="item_31"></h2>
-                    <h4 id="placed_31"></h4>
-                    <h4 id="effectGiven_31"></h4>
-                    <h4 id="effectBuffs_31"></h4>
-                    <h6 id="multiAndRarityDisplay_31"></h6>
-                    <h6 id="typeDisplay_31"></h6><button class="button1" onclick="addToSetup(31);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(31);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_30"></h2>
-                    <h2 id="item_30"></h2>
-                    <h4 id="placed_30"></h4>
-                    <h4 id="effectGiven_30"></h4>
-                    <h4 id="effectBuffs_30"></h4>
-                    <h6 id="multiAndRarityDisplay_30"></h6>
-                    <h6 id="typeDisplay_30"></h6><button class="button1" onclick="addToSetup(30);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(30);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_29"></h2>
-                    <h2 id="item_29"></h2>
-                    <h4 id="placed_29"></h4>
-                    <h4 id="effectGiven_29"></h4>
-                    <h4 id="effectBuffs_29"></h4>
-                    <h6 id="multiAndRarityDisplay_29"></h6>
-                    <h6 id="typeDisplay_29"></h6><button class="button1" onclick="addToSetup(29);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(29);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_6"></h2>
-                    <h2 id="item_6"></h2>
-                    <h4 id="placed_6"></h4>
-                    <h4 id="effectGiven_6"></h4>
-                    <h4 id="effectBuffs_6"></h4>
-                    <h6 id="multiAndRarityDisplay_6"></h6>
-                    <h6 id="typeDisplay_6"></h6><button class="button1" onclick="addToSetup(6);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(6);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_33"></h2>
-                    <h2 id="item_33"></h2>
-                    <h4 id="placed_33"></h4>
-                    <h4 id="effectGiven_33"></h4>
-                    <h4 id="effectBuffs_33"></h4>
-                    <h6 id="multiAndRarityDisplay_33"></h6>
-                    <h6 id="typeDisplay_33"></h6><button class="button1" onclick="addToSetup(33);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(33);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_32"></h2>
-                    <h2 id="item_32"></h2>
-                    <h4 id="placed_32"></h4>
-                    <h4 id="effectGiven_32"></h4>
-                    <h4 id="effectBuffs_32"></h4>
-                    <h6 id="multiAndRarityDisplay_32"></h6>
-                    <h6 id="typeDisplay_32"></h6><button class="button1" onclick="addToSetup(32);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(32);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_7"></h2>
-                    <h2 id="item_7"></h2>
-                    <h4 id="placed_7"></h4>
-                    <h4 id="effectGiven_7"></h4>
-                    <h4 id="effectBuffs_7"></h4>
-                    <h6 id="multiAndRarityDisplay_7"></h6>
-                    <h6 id="typeDisplay_7"></h6><button class="button1" onclick="addToSetup(7);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(7);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_34"></h2>
-                    <h2 id="item_34"></h2>
-                    <h4 id="placed_34"></h4>
-                    <h4 id="effectGiven_34"></h4>
-                    <h4 id="effectBuffs_34"></h4>
-                    <h6 id="multiAndRarityDisplay_34"></h6>
-                    <h6 id="typeDisplay_34"></h6><button class="button1" onclick="addToSetup(34);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(34);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_8"></h2>
-                    <h2 id="item_8"></h2>
-                    <h4 id="placed_8"></h4>
-                    <h4 id="effectGiven_8"></h4>
-                    <h4 id="effectBuffs_8"></h4>
-                    <h6 id="multiAndRarityDisplay_8"></h6>
-                    <h6 id="typeDisplay_8"></h6><button class="button1" onclick="addToSetup(8);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(8);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_24"></h2>
-                    <h2 id="item_24"></h2>
-                    <h4 id="placed_24"></h4>
-                    <h4 id="effectGiven_24"></h4>
-                    <h4 id="effectBuffs_24"></h4>
-                    <h6 id="multiAndRarityDisplay_24"></h6>
-                    <h6 id="typeDisplay_24"></h6><button class="button1" onclick="addToSetup(24);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(24);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_23"></h2>
-                    <h2 id="item_23"></h2>
-                    <h4 id="placed_23"></h4>
-                    <h4 id="effectGiven_23"></h4>
-                    <h4 id="effectBuffs_23"></h4>
-                    <h6 id="multiAndRarityDisplay_23"></h6>
-                    <h6 id="typeDisplay_23"></h6><button class="button1" onclick="addToSetup(23);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(23);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_9"></h2>
-                    <h2 id="item_9"></h2>
-                    <h4 id="placed_9"></h4>
-                    <h4 id="effectGiven_9"></h4>
-                    <h4 id="effectBuffs_9"></h4>
-                    <h6 id="multiAndRarityDisplay_9"></h6>
-                    <h6 id="typeDisplay_9"></h6><button class="button1" onclick="addToSetup(9);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(9);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_36"></h2>
-                    <h2 id="item_36"></h2>
-                    <h4 id="placed_36"></h4>
-                    <h4 id="effectGiven_36"></h4>
-                    <h4 id="effectBuffs_36"></h4>
-                    <h6 id="multiAndRarityDisplay_36"></h6>
-                    <h6 id="typeDisplay_36"></h6><button class="button1" onclick="addToSetup(36);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(36);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_37"></h2>
-                    <h2 id="item_37"></h2>
-                    <h4 id="placed_37"></h4>
-                    <h4 id="effectGiven_37"></h4>
-                    <h4 id="effectBuffs_37"></h4>
-                    <h6 id="multiAndRarityDisplay_37"></h6>
-                    <h6 id="typeDisplay_37"></h6><button class="button1" onclick="addToSetup(37);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(37);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_10"></h2>
-                    <h2 id="item_10"></h2>
-                    <h4 id="placed_10"></h4>
-                    <h4 id="effectGiven_10"></h4>
-                    <h4 id="effectBuffs_10"></h4>
-                    <h6 id="multiAndRarityDisplay_10"></h6>
-                    <h6 id="typeDisplay_10"></h6><button class="button1" onclick="addToSetup(10);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(10);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_38"></h2>
-                    <h2 id="item_38"></h2>
-                    <h4 id="placed_38"></h4>
-                    <h4 id="effectGiven_38"></h4>
-                    <h4 id="effectBuffs_38"></h4>
-                    <h6 id="multiAndRarityDisplay_38"></h6>
-                    <h6 id="typeDisplay_38"></h6><button class="button1" onclick="addToSetup(38);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(38);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_11"></h2>
-                    <h2 id="item_11"></h2>
-                    <h4 id="placed_11"></h4>
-                    <h4 id="effectGiven_11"></h4>
-                    <h4 id="effectBuffs_11"></h4>
-                    <h6 id="multiAndRarityDisplay_11"></h6>
-                    <h6 id="typeDisplay_11"></h6><button class="button1" onclick="addToSetup(11);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(11);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_19"></h2>
-                    <h2 id="item_19"></h2>
-                    <h4 id="placed_19"></h4>
-                    <h4 id="effectGiven_19"></h4>
-                    <h4 id="effectBuffs_19"></h4>
-                    <h6 id="multiAndRarityDisplay_19"></h6>
-                    <h6 id="typeDisplay_19"></h6><button class="button1" onclick="addToSetup(19);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(19);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_12"></h2>
-                    <h2 id="item_12"></h2>
-                    <h4 id="placed_12"></h4>
-                    <h4 id="effectGiven_12"></h4>
-                    <h4 id="effectBuffs_12"></h4>
-                    <h6 id="multiAndRarityDisplay_12"></h6>
-                    <h6 id="typeDisplay_12"></h6><button class="button1" onclick="addToSetup(12);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(12);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_35"></h2>
-                    <h2 id="item_35"></h2>
-                    <h4 id="placed_35"></h4>
-                    <h4 id="effectGiven_35"></h4>
-                    <h4 id="effectBuffs_35"></h4>
-                    <h6 id="multiAndRarityDisplay_35"></h6>
-                    <h6 id="typeDisplay_35"></h6><button class="button1" onclick="addToSetup(35);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(35);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_20"></h2>
-                    <h2 id="item_20"></h2>
-                    <h4 id="placed_20"></h4>
-                    <h4 id="effectGiven_20"></h4>
-                    <h4 id="effectBuffs_20"></h4>
-                    <h6 id="multiAndRarityDisplay_20"></h6>
-                    <h6 id="typeDisplay_20"></h6><button class="button1" onclick="addToSetup(20);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(20);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_18"></h2>
-                    <h2 id="item_18"></h2>
-                    <h4 id="placed_18"></h4>
-                    <h4 id="effectGiven_18"></h4>
-                    <h4 id="effectBuffs_18"></h4>
-                    <h6 id="multiAndRarityDisplay_18"></h6>
-                    <h6 id="typeDisplay_18"></h6><button class="button1" onclick="addToSetup(18);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(18);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_13"></h2>
-                    <h2 id="item_13"></h2>
-                    <h4 id="placed_13"></h4>
-                    <h4 id="effectGiven_13"></h4>
-                    <h4 id="effectBuffs_13"></h4>
-                    <h6 id="multiAndRarityDisplay_13"></h6>
-                    <h6 id="typeDisplay_13"></h6><button class="button1" onclick="addToSetup(13);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(13);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_14"></h2>
-                    <h2 id="item_14"></h2>
-                    <h4 id="placed_14"></h4>
-                    <h4 id="effectGiven_14"></h4>
-                    <h4 id="effectBuffs_14"></h4>
-                    <h6 id="multiAndRarityDisplay_14"></h6>
-                    <h6 id="typeDisplay_14"></h6><button class="button1" onclick="addToSetup(14);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(14);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_15"></h2>
-                    <h2 id="item_15"></h2>
-                    <h4 id="placed_15"></h4>
-                    <h4 id="effectGiven_15"></h4>
-                    <h4 id="effectBuffs_15"></h4>
-                    <h6 id="multiAndRarityDisplay_15"></h6>
-                    <h6 id="typeDisplay_15"></h6><button class="button1" onclick="addToSetup(15);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(15);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_16"></h2>
-                    <h2 id="item_16"></h2>
-                    <h4 id="placed_16"></h4>
-                    <h4 id="effectGiven_16"></h4>
-                    <h4 id="effectBuffs_16"></h4>
-                    <h6 id="multiAndRarityDisplay_16"></h6>
-                    <h6 id="typeDisplay_16"></h6><button class="button1" onclick="addToSetup(16);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(16);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_17"></h2>
-                    <h2 id="item_17"></h2>
-                    <h4 id="placed_17"></h4>
-                    <h4 id="effectGiven_17"></h4>
-                    <h4 id="effectBuffs_17"></h4>
-                    <h6 id="multiAndRarityDisplay_17"></h6>
-                    <h6 id="typeDisplay_17"></h6><button class="button1" onclick="addToSetup(17);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(17);">Remove from setup</button>
-                </div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_21"></h2>
-                    <h2 id="item_21"></h2>
-                    <h4 id="placed_21"></h4>
-                    <h4 id="effectGiven_21"></h4>
-                    <h4 id="effectBuffs_21"></h4>
-                    <h6 id="multiAndRarityDisplay_21"></h6>
-                    <h6 id="typeDisplay_21"></h6><button class="button1" onclick="addToSetup(21);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(21);">Remove from setup</button>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-sm-3 border-1 text-center itemDisplay">
-                    <h2 id="name_22"></h2>
-                    <h2 id="item_22"></h2>
-                    <h4 id="placed_22"></h4>
-                    <h4 id="effectGiven_22"></h4>
-                    <h4 id="effectBuffs_22"></h4>
-                    <h6 id="multiAndRarityDisplay_22"></h6>
-                    <h6 id="typeDisplay_22"></h6><button class="button1" onclick="addToSetup(22);">Add to
-                        setup</button><button class="button1" onclick="removeFromSetup(22);">Remove from setup</button>
-                </div>
-                <!--Deletion Ends Here-->
-            </div>
-
         </div>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    </div>
+    </div>
+    </row>
+    <hr>
+    <div class="row" style="margin:10px;">
+        <form id="form">
+            <input style="text-align:justify !important;" type="search" id="query" onclick="this.value='',searchItems(this.value)"
+                oninput="searchItems(this.value)" autocomplete="off" placeholder="Search Items">
+        </form>
+        <br>
+        <br>
+        <!--Deletion Starts Here-->
+        <div class="text-center itemDisplay" style="width:343px;" id="BasicProcessor">
+            <h3 id="name_2">
+                </h2>
+                <h4 id="amtAndPlaced_2"></h4>
+                <h6 id="multiAndRarityDisplay_2"></h6>
+                <h6 id="typeDisplay_2"></h6>
+                <button class="button1" onclick="addToSetup(2);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(2);">Remove from setup</button>
+        </div>
+        <div class="text-center itemDisplay" style="width:343px;" id="BasicDropper">
+            <h3 id="name_0">
+                </h2>
+                <h4 id="amtAndPlaced_0"></h4>
+                <h6 id="multiAndRarityDisplay_0"></h6>
+                <h6 id="typeDisplay_0"></h6>
+                <button class="button1" onclick="addToSetup(0);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(0);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="BasicUpgrader">
+            <h3 id="name_1">
+                </h2>
+                <h4 id="amtAndPlaced_1"></h4>
+                <h6 id="multiAndRarityDisplay_1"></h6>
+                <h6 id="typeDisplay_1"></h6>
+                <button class="button1" onclick="addToSetup(1);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(1);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="SandBlaster">
+            <h3 id="name_25">
+                </h2>
+                <h4 id="amtAndPlaced_25"></h4>
+                <h4 id="effectStats_25"></h4>
+                <h6 id="multiAndRarityDisplay_25"></h6>
+                <h6 id="typeDisplay_25"></h6>
+                <button class="button1" onclick="addToSetup(25);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(25);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="AntibodySynthesizer">
+            <h3 id="name_3">
+                </h2>
+                <h4 id="amtAndPlaced_3"></h4>
+                <h4 id="effectStats_3">
+                    </h5>
+                    <h6 id="multiAndRarityDisplay_3"></h6>
+                    <h6 id="typeDisplay_3"></h6>
+                    <button class="button1" onclick="addToSetup(3);">Add to setup</button><button class="button1"
+                        onclick="removeFromSetup(3);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="IglooEnhancer">
+            <h3 id="name_26">
+                </h2>
+                <h4 id="amtAndPlaced_26"></h4>
+                <h4 id="effectStats_26"></h4>
+                <h6 id="multiAndRarityDisplay_26"></h6>
+                <h6 id="typeDisplay_26"></h6>
+                <button class="button1" onclick="addToSetup(26);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(26);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="UninterestingRefinery">
+            <h3 id="name_4">
+                </h2>
+                <h4 id="amtAndPlaced_4"></h4>
+                <h6 id="multiAndRarityDisplay_4"></h6>
+                <h6 id="typeDisplay_4"></h6>
+                <button class="button1" onclick="addToSetup(4);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(4);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="CryptocurrencyEnchanter">
+            <h3 id="name_28">
+                </h2>
+                <h4 id="amtAndPlaced_28"></h4>
+                <h4 id="effectStats_28"></h4>
+                <h6 id="multiAndRarityDisplay_28"></h6>
+                <h6 id="typeDisplay_28"></h6>
+                <button class="button1" onclick="addToSetup(28);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(28);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="OreRuster">
+            <h3 id="name_27">
+                </h2>
+                <h4 id="amtAndPlaced_27"></h4>
+                <h6 id="multiAndRarityDisplay_27"></h6>
+                <h6 id="typeDisplay_27"></h6>
+                <button class="button1" onclick="addToSetup(27);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(27);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="CandyMaterializer">
+            <h3 id="name_5">
+                </h2>
+                <h4 id="amtAndPlaced_5"></h4>
+                <h6 id="multiAndRarityDisplay_5"></h6>
+                <h6 id="typeDisplay_5"></h6>
+                <button class="button1" onclick="addToSetup(5);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(5);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="LaunderedRefiner">
+            <h3 id="name_31">
+                </h2>
+                <h4 id="amtAndPlaced_31"></h4>
+                <h4 id="effectStats_31">
+                    </h5>
+                    <h6 id="multiAndRarityDisplay_31"></h6>
+                    <h6 id="typeDisplay_31"></h6>
+                    <button class="button1" onclick="addToSetup(31);">Add to setup</button><button class="button1"
+                        onclick="removeFromSetup(31);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="ContainmentBreach">
+            <h3 id="name_30">
+                </h2>
+                <h4 id="amtAndPlaced_30"></h4>
+                <h4 id="effectStats_30"></h4>
+                <h6 id="multiAndRarityDisplay_30"></h6>
+                <h6 id="typeDisplay_30"></h6>
+                <button class="button1" onclick="addToSetup(30);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(30);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="TrueDarkness">
+            <h3 id="name_29">
+                </h2>
+                <h4 id="amtAndPlaced_29"></h4>
+                <h4 id="effectStats_29"></h4>
+                <h6 id="multiAndRarityDisplay_29"></h6>
+                <h6 id="typeDisplay_29"></h6>
+                <button class="button1" onclick="addToSetup(29);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(29);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="PoisonDartFrogInjector">
+            <h3 id="name_6">
+                </h2>
+                <h4 id="amtAndPlaced_6"></h4>
+                <h4 id="effectStats_6"></h4>
+                <h6 id="multiAndRarityDisplay_6"></h6>
+                <h6 id="typeDisplay_6"></h6>
+                <button class="button1" onclick="addToSetup(6);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(6);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="ToxicWasteDisposal">
+            <h3 id="name_33">
+                </h2>
+                <h4 id="amtAndPlaced_33"></h4>
+                <h4 id="effectStats_33"></h4>
+                <h6 id="multiAndRarityDisplay_33"></h6>
+                <h6 id="typeDisplay_33"></h6>
+                <button class="button1" onclick="addToSetup(33);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(33);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="ApplePieifier">
+            <h3 id="name_32">
+                </h2>
+                <h4 id="amtAndPlaced_32"></h4>
+                <h6 id="multiAndRarityDisplay_32"></h6>
+                <h6 id="typeDisplay_32"></h6>
+                <button class="button1" onclick="addToSetup(32);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(32);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="Un-FrozenPond">
+            <h3 id="name_7">
+                </h2>
+                <h4 id="amtAndPlaced_7"></h4>
+                <h4 id="effectStats_7"></h4>
+                <h6 id="multiAndRarityDisplay_7"></h6>
+                <h6 id="typeDisplay_7"></h6>
+                <button class="button1" onclick="addToSetup(7);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(7);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="GoldenAssembler">
+            <h3 id="name_34">
+                </h2>
+                <h4 id="amtAndPlaced_34"></h4>
+                <h6 id="multiAndRarityDisplay_34"></h6>
+                <h6 id="typeDisplay_34"></h6>
+                <button class="button1" onclick="addToSetup(34);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(34);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="Elsa">
+            <h3 id="name_8">
+                </h2>
+                <h4 id="amtAndPlaced_8"></h4>
+                <h4 id="effectStats_8">
+                    </h5>
+                    <h6 id="multiAndRarityDisplay_8"></h6>
+                    <h6 id="typeDisplay_8"></h6>
+                    <button class="button1" onclick="addToSetup(8);">Add to setup</button><button class="button1"
+                        onclick="removeFromSetup(8);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="NaturalRefiner">
+            <h3 id="name_24">
+                </h2>
+                <h4 id="amtAndPlaced_24"></h4>
+                <h6 id="multiAndRarityDisplay_24"></h6>
+                <h6 id="typeDisplay_24"></h6>
+                <button class="button1" onclick="addToSetup(24);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(24);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="LaserAmplifier">
+            <h3 id="name_23">
+                </h2>
+                <h4 id="amtAndPlaced_23"></h4>
+                <h6 id="multiAndRarityDisplay_23"></h6>
+                <h6 id="typeDisplay_23"></h6>
+                <button class="button1" onclick="addToSetup(23);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(23);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="HomemadePopsicle">
+            <h3 id="name_9">
+                </h2>
+                <h4 id="amtAndPlaced_9"></h4>
+                <h4 id="effectStats_9">
+                    </h5>
+                    <h6 id="multiAndRarityDisplay_9"></h6>
+                    <h6 id="typeDisplay_9"></h6>
+                    <button class="button1" onclick="addToSetup(9);">Add to setup</button><button class="button1"
+                        onclick="removeFromSetup(9);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="Wormhole">
+            <h3 id="name_36">
+                </h2>
+                <h4 id="amtAndPlaced_36"></h4>
+                <h6 id="multiAndRarityDisplay_36"></h6>
+                <h6 id="typeDisplay_36"></h6>
+                <button class="button1" onclick="addToSetup(36);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(36);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="DiamondEdgedBlade">
+            <h3 id="name_37">
+                </h2>
+                <h4 id="amtAndPlaced_37"></h4>
+                <h6 id="multiAndRarityDisplay_37"></h6>
+                <h6 id="typeDisplay_37"></h6>
+                <button class="button1" onclick="addToSetup(37);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(37);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="WaspStingifier">
+            <h3 id="name_10">
+                </h2>
+                <h4 id="amtAndPlaced_10"></h4>
+                <h6 id="multiAndRarityDisplay_10"></h6>
+                <h6 id="typeDisplay_10"></h6>
+                <button class="button1" onclick="addToSetup(10);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(10);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="PyrmidalComplex">
+            <h3 id="name_38">
+                </h2>
+                <h4 id="amtAndPlaced_38"></h4>
+                <h6 id="multiAndRarityDisplay_38"></h6>
+                <h6 id="typeDisplay_38"></h6>
+                <button class="button1" onclick="addToSetup(38);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(38);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="ThrivingForest">
+            <h3 id="name_11">
+                </h2>
+                <h4 id="amtAndPlaced_11"></h4>
+                <h4 id="effectStats_11"></h4>
+                <h6 id="multiAndRarityDisplay_11"></h6>
+                <h6 id="typeDisplay_11"></h6>
+                <button class="button1" onclick="addToSetup(11);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(11);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="FlamesofRedemption">
+            <h3 id="name_19">
+                </h2>
+                <h4 id="amtAndPlaced_19"></h4>
+                <h4 id="effectStats_19"></h4>
+                <h6 id="multiAndRarityDisplay_19"></h6>
+                <h6 id="typeDisplay_19"></h6>
+                <button class="button1" onclick="addToSetup(19);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(19);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="Laser-PoweredGarbageCan">
+            <h3 id="name_12">
+                </h2>
+                <h4 id="amtAndPlaced_12"></h4>
+                <h6 id="multiAndRarityDisplay_12"></h6>
+                <h6 id="typeDisplay_12"></h6>
+                <button class="button1" onclick="addToSetup(12);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(12);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="VoidedCorruptor">
+            <h3 id="name_35">
+                </h2>
+                <h4 id="amtAndPlaced_35"></h4>
+                <h4 id="effectStats_35">
+                    </h5>
+                    <h6 id="multiAndRarityDisplay_35"></h6>
+                    <h6 id="typeDisplay_35"></h6>
+                    <button class="button1" onclick="addToSetup(35);">Add to setup</button><button class="button1"
+                        onclick="removeFromSetup(35);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="MarsDrill">
+            <h3 id="name_20">
+                </h2>
+                <h4 id="amtAndPlaced_20"></h4>
+                <h6 id="multiAndRarityDisplay_20"></h6>
+                <h6 id="typeDisplay_20"></h6>
+                <button class="button1" onclick="addToSetup(20);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(20);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="MoonlitWaterfall">
+            <h3 id="name_18">
+                </h2>
+                <h4 id="amtAndPlaced_18"></h4>
+                <h6 id="multiAndRarityDisplay_18"></h6>
+                <h6 id="typeDisplay_18"></h6>
+                <button class="button1" onclick="addToSetup(18);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(18);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="Super-Duper-Long-Range-Freeze-Blaster">
+            <h3 id="name_13">
+                </h2>
+                <h4 id="amtAndPlaced_13"></h4>
+                <h4 id="effectStats_13"></h4>
+                <h6 id="multiAndRarityDisplay_13"></h6>
+                <h6 id="typeDisplay_13"></h6>
+                <button class="button1" onclick="addToSetup(13);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(13);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="AntimatterDrill">
+            <h3 id="name_14">
+                </h2>
+                <h4 id="amtAndPlaced_14"></h4>
+                <h6 id="multiAndRarityDisplay_14"></h6>
+                <h6 id="typeDisplay_14"></h6>
+                <button class="button1" onclick="addToSetup(14);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(14);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="FusionReactor">
+            <h3 id="name_15">
+                </h2>
+                <h4 id="amtAndPlaced_15"></h4>
+                <h6 id="multiAndRarityDisplay_15"></h6>
+                <h6 id="typeDisplay_15"></h6>
+                <button class="button1" onclick="addToSetup(15);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(15);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="GodlikeAnnihalator">
+            <h3 id="name_16">
+                </h2>
+                <h4 id="amtAndPlaced_16"></h4>
+                <h6 id="multiAndRarityDisplay_16"></h6>
+                <h6 id="typeDisplay_16"></h6>
+                <button class="button1" onclick="addToSetup(16);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(16);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="ThePowerofTheSun">
+            <h3 id="name_17">
+                </h2>
+                <h4 id="amtAndPlaced_17"></h4>
+                <h4 id="effectStats_17"></h4>
+                <h6 id="multiAndRarityDisplay_17"></h6>
+                <h6 id="typeDisplay_17"></h6>
+                <button class="button1" onclick="addToSetup(17);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(17);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="IncinerationPlant">
+            <h3 id="name_21">
+                </h2>
+                <h4 id="amtAndPlaced_21"></h4>
+                <h6 id="multiAndRarityDisplay_21"></h6>
+                <h6 id="typeDisplay_21"></h6>
+                <button class="button1" onclick="addToSetup(21);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(21);">Remove from setup</button>
+        </div>
+        <div class=" text-center itemDisplay" style="width:343px;" id="WarpDrive">
+            <h3 id="name_22">
+                </h2>
+                <h4 id="amtAndPlaced_22"></h4>
+                <h6 id="multiAndRarityDisplay_22"></h6>
+                <h6 id="typeDisplay_22"></h6>
+                <button class="button1" onclick="addToSetup(22);">Add to setup</button><button class="button1"
+                    onclick="removeFromSetup(22);">Remove from setup</button>
+        </div>
+
+        <!--Deletion Ends Here-->
+    </div>
+
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
