@@ -345,7 +345,7 @@ function ascend() { // Ascension Function
         ascendCost *= 1.15;
         if (canSkip) {
            for (var s = 0; s < 20; s++) {
-        if (money > ascendCost * Math.pow(2, toPower)) {
+        if (money > ascendCost * Math.pow(4, toPower)) {
             toPower++;
             skipped++;
             if (ascendCost < 1e+201) {
@@ -399,7 +399,7 @@ function prestige() { // Prestige Function
         money = 0;
         lives = 0;
         if (presReq < 4500) {
-            presReq += 25;
+            presReq += 50;
         }
         ascendCost = 10;
         givePresItem();
@@ -483,7 +483,7 @@ function rebirth() { // Rebirth Function
         hasProcessor = false;
         lives = 0;
         if (rebirthPresReq < 50) {
-            rebirthPresReq ++;
+            rebirthPresReq +=2;
         }
         basicOre.changeCap();
         prestiges = 0;
