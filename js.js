@@ -489,7 +489,7 @@ function rebirth() { // Rebirth Function
         if (rebirthPresReq < 50) {
             rebirthPresReq ++;
         }
-        changeCap();
+        basicOre.changeCap();
         prestiges = 0;
         presReq = 100;
         ascendCost = 10;
