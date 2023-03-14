@@ -276,7 +276,7 @@ function addToSetup(index) {
         }
     }
 }
-    basicOre.changeTime();
+basicOre.changeTime();
     if (hasDropper == true && hasProcessor == true) {
         addMoney();
     }
@@ -302,6 +302,7 @@ function withdrawAll() {
         updateAmtAndPlaced(setup[i].getId());
         setup.splice(i, 1);
     }
+    basicOre.changeTime();
 }
 let myTimer = null;
 function addMoney() {
@@ -486,6 +487,7 @@ function rebirth() { // Rebirth Function
             rebirthPresReq +=2;
         }
         basicOre.changeCap();
+        basicOre.changeTime();
         prestiges = 0;
         presReq = 100;
         ascendCost = 10;
