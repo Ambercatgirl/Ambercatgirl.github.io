@@ -209,6 +209,7 @@ items.push(new createItem({itemName:'Pyrmidal Complex',itemAmt:0,amountPlaced:0,
     document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + setSuffix(ascendCost);
     document.getElementById("prestigeDisplay").innerHTML = "Prestige: " + presReq + " Lives";
     document.getElementById("prestigesDisplay").innerHTML = "Prestige " + prestiges
+    document.getElementById("rebirthsDisplay").innerHTML = "Rebirth " + rebirths;
     document.getElementById("rebirthDisplay").innerHTML = "Rebirth: " + rebirthPresReq + " Prestiges";
     document.getElementById("upgradeDisplay").innerHTML = "Increase Setup Speed: $" + upg1Cost;
     window.localStorage.setItem("hasInitialized", "true");
@@ -495,6 +496,7 @@ function rebirth() { // Rebirth Function
         document.getElementById("livesDisplay").innerHTML = "Life " + 0;
         document.getElementById("moneyDisplay").innerHTML = "$" + 0;
         document.getElementById("ascendDisplay").innerHTML = "Ascend for $" + setSuffix(ascendCost);
+        document.getElementById("rebirthsDisplay").innerHTML = "Rebirth " + rebirths;
         addMoney();
         saveData();
     }
