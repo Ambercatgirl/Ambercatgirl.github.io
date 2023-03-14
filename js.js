@@ -80,28 +80,25 @@ class createItem {
     }
     addAmt() { // Adds 1 item to inventory.
         this.itemAmt++;
-        document.getElementById(("item_" + this.itemId)).innerHTML = this.itemAmt + " Owned.";
+        updateAmtAndPlaced(this.itemId);
     }
     removeAmt() { // Removes 1 item from the inventory
         if (this.itemAmt > 0) {
             this.itemAmt--;
         }
-        document.getElementById(("item_" + this.itemId)).innerHTML = this.itemAmt + " Owned.";
+        updateAmtAndPlaced(this.itemId);
     }
     setAmt(num) {
         this.itemAmt = num;
-        document.getElementById(("item_" + this.itemId)).innerHTML = this.itemAmt + " Owned.";
+        updateAmtAndPlaced(this.itemId);
     }
     setPlaced(num) {
         this.amountPlaced = num;
-        document.getElementById(("placed_") + this.itemId).innerHTML = this.amountPlaced + " Placed.";
+        updateAmtAndPlaced(this.itemId);
     }
     changePlaced(num) {
         this.amountPlaced += num;
-        document.getElementById(("placed_") + this.itemId).innerHTML = this.amountPlaced + " Placed."
-    }
-    toString() {
-        return "Owned: " + this.getAmt() + "\nIs a " + this.getType() + "\n" + this.getMulti() + "x\nGives " + this.getEffect() + "\nBuffs " + this.hasEffect() + "\nRarity " + this.getRarity();
+        updateAmtAndPlaced(this.itemId);
     }
 }
 var items = [];
@@ -201,13 +198,11 @@ items.push(new createItem({itemName:'Pyrmidal Complex',itemAmt:0,amountPlaced:0,
     document.getElementById("canSkipCheck").checked = canSkip;
     addMoney();
     for (var i = 0; i < items.length; i++) {
-        document.getElementById(("name_") + i).innerHTML = items[i].getName();
-        document.getElementById(("item_") + i).innerHTML = items[i].getAmt() + " Owned.";
-        document.getElementById(("placed_") + i).innerHTML = items[i].getAmountPlaced() + " Placed.";
-        document.getElementById(("effectGiven_") + i).innerHTML = "Gives " + items[i].getEffect();
-        document.getElementById(("effectBuffs_") + i).innerHTML = "Buffs " + items[i].hasEffect();
-        document.getElementById(("multiAndRarityDisplay_") + i).innerHTML = items[i].getMulti() + "x | R" + items[i].getRarity();
-        document.getElementById(("typeDisplay_") + i).innerHTML = items[i].getType()[0].toUpperCase() + items[i].getType().slice(1);
+        updateName(i);
+        updateAmtAndPlaced(i);
+        updateEffectStats(i);
+        updateMultiAndRarity(i);
+        updateType(i);
     }
     document.getElementById("moneyDisplay").innerHTML = "$" + setSuffix(money);
     document.getElementById("livesDisplay").innerHTML = "Life " + lives;
@@ -230,17 +225,17 @@ function addToSetup(index) {
         if (hasDropper) {
             setup[0].addAmt((setup[0].getId()));
             setup[0].changePlaced(-1);
-            document.getElementById(("placed_" + setup[0].getId())).innerHTML = setup[0].getAmountPlaced() + " Placed.";
+            
             setup[0] = items[index];
             setup[0].removeAmt(index);
             setup[0].changePlaced(1);
-            document.getElementById(("placed_" + setup[0].getId())).innerHTML = setup[0].getAmountPlaced() + " Placed.";
+            updateAmtAndPlaced(setup[0].getId());
         } else {
             setup[0] = items[index];
             hasDropper = true;
             items[index].removeAmt(index);
             items[index].changePlaced(1);
-            document.getElementById(("placed_" + index)).innerHTML = items[index].getAmountPlaced() + " Placed.";
+            updateAmtAndPlaced(setup[0].getId());
         }
 
     }
@@ -249,16 +244,16 @@ function addToSetup(index) {
         if (hasProcessor) {
             setup[setup.length - 1].addAmt(setup[setup.length - 1].getId());
             setup[setup.length - 1].changePlaced(-1);
-            document.getElementById(("placed_" + setup[setup.length - 1].getId())).innerHTML = setup[setup.length - 1].getAmountPlaced() + " Placed.";
+            updateAmtAndPlaced(setup[setup.length - 1].getId);
             setup[setup.length - 1] = items[index];
             items[index].removeAmt(index);
             items[index].changePlaced(1);
-            document.getElementById(("placed_" + items[index].getId())).innerHTML = items[index].getAmountPlaced() + " Placed."
+            updateAmtAndPlaced(items[index].getId());
         } else {
             setup.push(items[index]);
             items[index].removeAmt(index);
             items[index].changePlaced(1);
-            document.getElementById(("placed_" + index)).innerHTML = items[index].getAmountPlaced() + " Placed.";
+            updateAmtAndPlaced(items[index].getId());
             hasProcessor = true;
         }
     }
@@ -271,12 +266,12 @@ function addToSetup(index) {
             items[index].removeAmt();
             setup.push(temp);
             items[index].changePlaced(1);
-            document.getElementById(("placed_" + index)).innerHTML = items[index].getAmountPlaced() + " Placed.";
+            updateAmtAndPlaced(items[index].getId());
         } else {
             setup.push(items[index]);
             items[index].removeAmt();
             items[index].changePlaced(1);
-            document.getElementById(("placed_" + index)).innerHTML = items[index].getAmountPlaced() + " Placed.";
+            updateAmtAndPlaced(items[index].getId());
         }
     }
 }
@@ -292,7 +287,7 @@ function removeFromSetup(index) {
                 setup.splice(i, 1);
                 items[index].addAmt();
                 items[index].changePlaced(-1);
-                document.getElementById(("placed_" + index)).innerHTML = items[index].getAmountPlaced() + " Placed.";
+                updateAmtAndPlaced(items[index].getId());
                 break;
             }
         }
@@ -303,7 +298,7 @@ function withdrawAll() {
     for (var i = setup.length - 2; i > 0; i--) {
         items[setup[i].getId()].addAmt(setup[i].getId());
         setup[i].changePlaced(-1);
-        document.getElementById(("placed_" + setup[i].getId())).innerHTML = items[setup[i].getId()].getAmountPlaced() + " Placed.";
+        updateAmtAndPlaced(setup[i].getId());
         setup.splice(i, 1);
     }
 }
@@ -671,6 +666,39 @@ function changeSkipState() {
     canSkip = !(canSkip)
     saveData();
 }
+function searchItems(text) {
+    var temp;
+    var temp2;
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].getName().toUpperCase().indexOf(text.toUpperCase()) != 0) {
+            temp = items[i].getName().replace(/ /g, "").replace(/'/g, "");
+            document.getElementById(temp).style.display = "none";
+        } else {
+            temp = items[i].getName().replace(/ /g, "").replace(/'/g, "");
+            document.getElementById(temp).style.display = "block";
+        }
+    }
+}
 function clearData() {
     localStorage.clear();
+}
+function updateName(num) {
+    document.getElementById(("name_") + num).innerHTML = items[num].getName();
+}
+function updateAmtAndPlaced(num) {
+    document.getElementById(("amtAndPlaced_") + num).innerHTML = items[num].getAmt() + " Owned, " + items[num].getAmountPlaced() + " Placed.";
+}
+function updateEffectStats(num) {
+        if (items[num].getEffect() != "none") {
+        document.getElementById(("effectStats_") + num).innerHTML = "Gives " + items[num].getEffect();
+        }
+        if (items[num].hasEffect() != "none") {
+        document.getElementById(("effectStats_") + num).innerHTML = "Buffs " + items[num].hasEffect();
+        }
+}
+function updateMultiAndRarity(num) {
+    document.getElementById(("multiAndRarityDisplay_") + num).innerHTML = items[num].getMulti() + "x | R" + items[num].getRarity();
+}
+function updateType(num) {
+    document.getElementById(("typeDisplay_") + num).innerHTML = items[num].getType()[0].toUpperCase() + items[num].getType().slice(1);
 }
